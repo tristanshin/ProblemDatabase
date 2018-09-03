@@ -1,0 +1,161 @@
+\ProvidesPackage{tssal}[2018/09/02]
+
+\ProcessOptions\relax
+
+% Useful Packages
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath, amsthm, amssymb, amsfonts}
+
+% Title Formatting
+\usepackage{titling}
+\pretitle{
+	\begin{center}
+	~\\ \vspace{-10em}
+	\Large\bfseries\boldmath
+}
+\posttitle{~\\ \vspace{-0.1em} \end{center}}
+
+\preauthor{\begin{center}}
+\postauthor{~\\ \vspace{-0.2em} \end{center}}
+
+\predate{\begin{center}}
+\postdate{~\\ \end{center}}
+
+\title{~\vspace{-2em}}
+\author{~\vspace{-2em}}
+\date{~\vspace{-5ex}}
+
+% Document Formatting
+\usepackage[margin=1in]{geometry}
+\usepackage[dvipsnames]{xcolor}
+\newlength\tindent
+\setlength{\tindent}{\parindent}
+\setlength{\parindent}{0pt}
+\renewcommand{\indent}{\hspace*{\tindent}}
+\setlength{\parskip}{1em}
+
+% Header/Footer
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\setlength{\headheight}{3em}
+
+\lhead{\thetitle}
+\rhead{\theauthor}
+\cfoot{\thepage}
+
+% Referencing
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+\usepackage{nameref}
+
+% Theorems
+\usepackage[most]{tcolorbox}
+\tcbuselibrary{theorems}
+\theoremstyle{definition}
+\newtcbtheorem[number within=section]{theorem}{Theorem}{
+    colback=green!5,
+    colframe=green!35!black,
+    fonttitle=\bfseries
+}{thm}
+\newtcbtheorem[use counter from=theorem]{corollary}{Corollary}{
+    colback=green!5,
+    colframe=green!35!black,
+    fonttitle=\bfseries
+}{cor}
+\newtcbtheorem[use counter from=theorem]{lemma}{Lemma}{
+    colback=green!5,
+    colframe=green!35!black,
+    fonttitle=\bfseries
+}{lem}
+\newtcbtheorem[number within=section]{proposition}{Proposition}{
+    colback=green!5,
+    colframe=green!35!black,
+    fonttitle=\bfseries
+}{prop}
+
+\newtheorem*{definition}{Definition}
+\newtheorem*{claim}{Claim}
+\newtheorem*{remark}{Remark}
+\renewcommand\qedsymbol{$\blacksquare$}
+
+% Problems
+\newtcbtheorem[use counter from=theorem]{problem}{Problem}{
+    colback=green!5,
+    colframe=green!35!black,
+    fonttitle=\bfseries
+}{prob}
+\newtcbtheorem[use counter from=theorem]{question}{Question}{
+    colback=green!5,
+    colframe=green!35!black,
+    fonttitle=\bfseries
+}{ques}
+\newtcbtheorem[use counter from=theorem]{example}{Example}{
+    colback=Turquoise!5,
+    colframe=Turquoise!70,
+    fonttitle=\bfseries,
+    sharp corners
+}{ex}
+\newenvironment{inquestion}{Question:}{}
+\newenvironment{solution}{}{\hfill$\blacksquare$}
+\newenvironment{solutionlemma}{\textbf{Lemma:}}{}
+\newenvironment{lemmaproof}{Proof.}{\hfill$\square$}
+
+% Extras
+\usepackage{graphicx}
+\usepackage[inline]{asymptote}
+\usepackage{float}
+\usepackage{afterpage}
+\usepackage[colorinlistoftodos]{todonotes}
+
+% Problem Database
+\newcommand{\pdb}[1]{\input{"/Users/tristan.shin/Google Drive/Math Stuff/ProblemDatabase/P/#1".tex}\unskip}
+\newcommand{\sdb}[1]{\input{"/Users/tristan.shin/Google Drive/Math Stuff/ProblemDatabase/S/#1".tex}\unskip}
+\newcommand{\pdbl}[1]{(\input{"/Users/tristan.shin/Google Drive/Math Stuff/ProblemDatabase/L/#1".tex}\unskip) \pdb{#1}}
+
+% Personal Definitions
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\Arg}{Arg}
+\DeclareMathOperator{\Log}{Log}
+\DeclareMathOperator{\re}{Re}
+\DeclareMathOperator{\im}{Im}
+\DeclareMathOperator{\cis}{cis}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\trace}{tr}
+\DeclareMathOperator{\complexs}{\mathbb{C}}
+\DeclareMathOperator{\reals}{\mathbb{R}}
+\DeclareMathOperator{\rationals}{\mathbb{Q}}
+\DeclareMathOperator{\ints}{\mathbb{Z}}
+\DeclareMathOperator{\nonnegints}{\mathbb{N}_0}
+\DeclareMathOperator{\posints}{\mathbb{N}}
+\newcommand{\ff}[1]{\mathbb{F}_{#1}}
+
+\newcommand{\cycsum}{\displaystyle\sum_{\mathrm{cyc}}}
+\newcommand{\symsum}{\displaystyle\sum_{\mathrm{sym}}}
+\newcommand{\cycprod}{\displaystyle\prod_{\mathrm{cyc}}}
+\newcommand{\symprod}{\displaystyle\prod_{\mathrm{sym}}}
+
+\newcommand{\eps}{\epsilon}
+
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil #1 \right\rceil}
+\newcommand{\fracpart}[1]{\curlybrace{#1}}
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\vecb}[1]{\mathbf{#1}}
+\newcommand{\vecabs}[1]{\abs{\abs{#1}}}
+\newcommand{\paren}[1]{\left( #1 \right)}
+\newcommand{\brac}[1]{\left[ #1 \right]}
+\newcommand{\parenbrac}[1]{\left( #1 \right]}
+\newcommand{\bracparen}[1]{\left[ #1 \right)}
+\newcommand{\curlybrace}[1]{\left\{ #1 \right\}}
+\newcommand{\innerproduct}[2]{\left\langle #1, #2 \right\rangle}
+\newcommand{\conj}[1]{\overline{#1}}
+\newcommand{\cbrt}[1]{\sqrt[3]{ #1 }}
+\newcommand{\arc}[1]{\wideparen{#1}}
+\newcommand{\jacobi}[2]{\paren{\frac{#1}{#2}}}
