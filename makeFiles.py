@@ -53,3 +53,26 @@ def USAJMO(year):
         os.system("touch " + filename)
         os.system("open " + filename)
 
+def TARML(year):
+    problems = []
+    for i in range(1,11):
+        problems.append("I" + str(i))
+    for i in range(1,3):
+        for j in range(1,4):
+            problems.append("R" + str(i) + "." + str(j))
+    for problem in problems:
+        filename = "TARML-" + str(year) + "-" + problem + ".tex"
+        os.system("touch " + filename)
+        os.system("open " + filename)
+
+def TSTST(year):
+    num = 9
+    if year in range(2014,2018):
+        num = 6
+    for i in range(1,num + 1):
+        filename = "TSTST-" + str(year) + "-" + str(i) + ".tex"
+        os.system("touch " + filename)
+        os.system("open " + filename)
+
+for year in range(2011,2019):
+    TSTST(year)
