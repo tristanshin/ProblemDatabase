@@ -1,0 +1,15 @@
+Let $ABC$ be a triangle with $AB=13$, $BC=14$, $CA=15$. Two circles of equal size are inscribed in the triangle as shown (diagram not drawn to scale), with both tangent to $BC$ and one tangent to each of $AB,AC$. What is the radius of either of the circles?
+
+\begin{center}
+\begin{asy}
+size(5cm);
+pair B=(0,0), C=(5,0), A=(2,4);
+real r=0.88999105559,s=1.44003577763;
+draw(A--B--C--cycle);
+draw(circle((s,r),r));
+draw(circle((s+2r,r),r));
+label("$A$",A,N);
+label("$B$",B,SW);
+label("$C$",C,SE);
+\end{asy}
+\end{center}

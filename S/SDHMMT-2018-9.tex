@@ -1,0 +1,9 @@
+Let $K$ be the number of pairs that work with $a=b$. Then if the total number with $a\neq b$ is $J$, then our answer will be $\frac{J}{2}+K$ by symmetry.
+
+First, we compute $K$. Note that we need $2^{49}a^{49}\equiv2a^{49}\pmod{49}$. This is equivalent to $\left(2^{49}-2\right)a^{49}\equiv0\pmod{49}$, which in turn is equivalent to \[\frac{2^{49}-2}{7}a^{49}\equiv0\pmod7.\] Since $2^{49}-2$ is not divisible by $49$, we get that $a^{49}\equiv0\pmod7$. Equivalently, $a\equiv0\pmod7$. There are $7$ possible choices here, so $K=7$.
+
+Now, we compute $J$. If either $a$ or $b$ is $0\pmod7$, then this works by Binomial Theorem, so there are $2\cdot7\cdot48-7\cdot6$ possibilities here. If $a+b\equiv0\pmod7$ but $a,b$ are not $0\pmod7$, then this always works by Binomial Theorem, so there are $42\cdot7$ possibilities here.
+
+Now, we assume that $a,b,a+b$ are not $0\pmod7$. Then by Euler's Theorem, the condition is equivalent to \[\left(a+b\right)^7\equiv a^7+b^7\pmod{49}.\] Subtracting then factoring, we need \[7ab\left(a+b\right)\left(a^2+ab+b^2\right)^2\equiv0\pmod{49},\] which is equivalent to \[a^2+ab+b^2\equiv0\pmod7.\] But since \[a^2+ab+b^2\equiv a^2-6ab+8b^2\equiv\left(a-2b\right)\left(a-4b\right)\pmod7,\] there are always two distinct residues modulo $7$ that work for $b$ with any fixed $a$ that is not $0\pmod7$. Thus, there are $42\cdot14$ possibilities here.
+
+Thus, $J=2\cdot7\cdot48-7\cdot6+42\cdot7+42\cdot14$, so $\frac{J}{2}+K=\boxed{763}$.

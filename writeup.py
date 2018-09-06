@@ -30,9 +30,11 @@ def today():
 def write(problem):
     PSearch = find_all(problem + ".tex","P")
     SSearch = find_all(problem + ".tex","S")
+    LSearch = find_all(problem + ".tex","L")
     WSearch = find_all(problem + ".tex","W")
     P_EXIST = len(PSearch) > 0
     S_EXIST = len(SSearch) > 0
+    L_EXIST = len(LSearch) > 0
     W_EXIST = len(WSearch) > 0
     ready = True
     if not P_EXIST:
@@ -49,8 +51,19 @@ def write(problem):
         os.system("open " + problem + ".tex")
         os.chdir("..")
         ready = False
+    if not L_EXIST:
+        print("Please write label file.")
+        os.chdir("L")
+        os.system("touch " + problem + ".tex")
+        os.system("open " + problem + ".tex")
+        os.chdir("..")
+        ready = False
     if ready and not W_EXIST:
-        title = input("TITLE :: ")
+        os.chdir("L")
+        label = open(problem + ".tex","r")
+        title = label.readline()
+        os.chdir("..")
+        # title = input("TITLE :: ")
         os.chdir("W")
         writeup = open(problem + ".tex","w+")
         writeup.write("\\documentclass[a4paper, 12pt]{article}\n")

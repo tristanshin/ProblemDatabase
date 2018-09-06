@@ -1,0 +1,7 @@
+We use $s$ to denote the semiperimeter of $\triangle{ABC}$. If we extend $BI$ to hit $AC$ at $E$, then Stewart's Theorem and the Angle Bisector Theorem on $\triangle{ABC}$ tell us that $BE=\frac{2\sqrt{acs\left(s-b\right)}}{a+c}$. Then the Angle Bisector Theorem on $\triangle{BCE}$ tells us that $\frac{BI}{IE}=\frac{BC}{CE}=\frac{a+c}{b}$, so we deduce that $BI=\sqrt{\frac{ac\left(s-b\right)}{s}}$.
+
+Then by AM-GM, \[BI=\sqrt{\frac{ac\left(s-b\right)}{s}}\leq\frac{ac+\frac{s-b}{s}}{2}.\] Similarly, \[CI\leq\frac{ab+\frac{s-c}{s}}{2}.\] Adding these up gets us that \[BI+CI\leq a\left(\frac{b+c}{2}+\frac{1}{a+b+c}\right).\] Thus, equality holds and we see that $ac=\frac{s-b}{s}$ and $ab=\frac{s-c}{s}$.
+
+Then \[as=\frac{s-b}{c}=\frac{s-c}{b},\] so \[\left(b-c\right)s=\left(b-c\right)\left(b+c\right).\] Since $s\neq b+c$ (otherwise $a=b+c$, bad), we see that $b=c$. Then $ab=\frac{a}{a+2b}$, so $a=\frac{1}{b}-2b$ and thus the perimeter is $\frac{1}{b}$. It suffices to bound $b$.
+
+Note that \[\frac{1}{b}-2b=a>0,\] so $b<\frac{1}{\sqrt{2}}$. Also note that \[b+b>a=\frac{1}{b}-2b\] by the Triangle Inequality, so $b>\frac{1}{2}$. Thus, $\frac{1}{b}$ lies in $\boxed{\left(\sqrt{2},2\right)}$ and all values can be achieved in this range.

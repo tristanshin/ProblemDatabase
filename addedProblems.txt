@@ -1,19 +1,23 @@
 CCAMB
-	- to add:	
 	- maybe:	2015
 	- added:	2016-2018
 
+EGMO
+	- added:	2012-2018
+
 OMO
-	- to add:	
 	- maybe:	Winter 2012, Fall 2012, Winter 2013
 	- added:	Fall 2013 - Spring 2018
 
+TARML
+	- maybe:	2015, 2016
+	- added:	2017-2018
+
+TST
+	- added:	2000-2018
+
 TSTST
-	- to add:	
-	- maybe:	
 	- added:	2011-2018
 
 USAJMO
-	- to add:
-	- maybe:
 	- added:	2010-2018

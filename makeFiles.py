@@ -18,6 +18,15 @@ def CCAMB(year):
         os.system("touch " + filename)
         os.system("open " + filename)
 
+def EGMO(year):
+    num = 6
+    if year == 2012:
+        num = 8
+    for i in range(1,num + 1):
+        filename = "EGMO-" + str(year) + "-" + str(i) + ".tex"
+        os.system("touch " + filename)
+        os.system("open " + filename)
+
 def OMO(contest):
     path = "~/Dropbox/OMO/" + contest + "/problems"
     season = "Fall"
@@ -41,15 +50,9 @@ def OMO(contest):
         pfile.close()
         os.chdir(os.path.expanduser("~/Google Drive/Math Stuff/ProblemDatabase/P"))
 
-def USAMO(year):
-    for i in range(1,7):
-        filename = "USAMO-" + str(year) + "-" + str(i) + ".tex"
-        os.system("touch " + filename)
-        os.system("open " + filename)
-
-def USAJMO(year):
-    for i in range(1,7):
-        filename = "USAJMO-" + str(year) + "-" + str(i) + ".tex"
+def SDHMMT(year):
+    for i in range(1,11):
+        filename = "SDHMMT-" + str(year) + "-" + str(i) + ".tex"
         os.system("touch " + filename)
         os.system("open " + filename)
 
@@ -65,6 +68,17 @@ def TARML(year):
         os.system("touch " + filename)
         os.system("open " + filename)
 
+def TST(year):
+    num = 6
+    if year in [2001,2008,2009,2010,2011]:
+        num = 9
+    if year in [2012,2013]:
+        num = 8
+    for i in range(1,num + 1):
+        filename = "TST-" + str(year) + "-" + str(i) + ".tex"
+        os.system("touch " + filename)
+        os.system("open " + filename)
+
 def TSTST(year):
     num = 9
     if year in range(2014,2018):
@@ -74,5 +88,17 @@ def TSTST(year):
         os.system("touch " + filename)
         os.system("open " + filename)
 
-for year in range(2011,2019):
-    TSTST(year)
+def USAJMO(year):
+    for i in range(1,7):
+        filename = "USAJMO-" + str(year) + "-" + str(i) + ".tex"
+        os.system("touch " + filename)
+        os.system("open " + filename)
+
+def USAMO(year):
+    for i in range(1,7):
+        filename = "USAMO-" + str(year) + "-" + str(i) + ".tex"
+        os.system("touch " + filename)
+        os.system("open " + filename)
+
+for year in range(2000,2019):
+    TST(year)

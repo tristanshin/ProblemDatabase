@@ -1,0 +1,7 @@
+Let $P\left(x\right)=ax^2-cx+b$ and suppose that the two roots of $P$ are $r,s\in\left(0,1\right)$. By Vieta, $\frac{c}{a}=r+s<2$ and $\frac{b}{a}=rs<1$, so $c<2a$ and $b<a$. Next, note that the discriminant of $P$ must be positive, so \[c^2>4ab>4b^2\] which implies that $c>2b$. Now, note that $P\left(1\right)>0$, so $a+b>c$. Combining this information, \[a+b\geq c+1\geq 2b+2\geq b+3,\] so $a\geq3$.
+
+If $a=3$, we obtain the inequalities $c\leq5$, $b\leq2$, $c\geq2b+1$, and $b+2\geq c$. Combining the last two gives that $c\leq3$. But since $b\geq1$, we get that $c\geq3$, so $c=3$. Then $b=1$. But then $c^2<4ab$, so the polynomial does not have real roots.
+
+If $a=4$, we obtain the inequalities $c\leq7$, $b\leq3$, $c\geq2b+1$, and $b+3\geq c$. Combining the last two gives that $c\leq5$. Then the third inequality tells us that $b\leq2$. If $b=2$, then $c=5$. But then $c^2<4ab$, so the polynomial does not have real roots. Thus, $b=1$ and we get that $c=3,4$. Either way, $c^2\leq4ab$ (note that equality holds at $c=4$, meaning that the polynomial $4x^2-4x+1$ \emph{nearly} works), so the polynomial does not have real roots.
+
+On the other hand, if $a=5$, observe that $5x^2-5x+1$ has two roots in $\left(0,1\right)$, so the minimum of $a$ is $\boxed{5}$.
