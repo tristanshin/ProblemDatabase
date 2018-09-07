@@ -1,6 +1,12 @@
 import os
 os.chdir("P")
 
+def APMO(year):
+    for i in range(1,6):
+        filename = "APMO-" + str(year) + "-" + str(i) + ".tex"
+        os.system("touch " + filename)
+        os.system("open " + filename)
+
 def CCAMB(year):
     problems = []
     for i in range(1,16):
@@ -49,6 +55,17 @@ def OMO(contest):
         orig.close()
         pfile.close()
         os.chdir(os.path.expanduser("~/Google Drive/Math Stuff/ProblemDatabase/P"))
+
+def RMM(year):
+    if year == 2014:
+        return
+    num = 6
+    if year in [2008,2009]:
+        num = 4
+    for i in range(1,num + 1):
+        filename = "RMM-" + str(year) + "-" + str(i) + ".tex"
+        os.system("touch " + filename)
+        os.system("open " + filename)
 
 def SDHMMT(year):
     for i in range(1,11):
@@ -99,6 +116,3 @@ def USAMO(year):
         filename = "USAMO-" + str(year) + "-" + str(i) + ".tex"
         os.system("touch " + filename)
         os.system("open " + filename)
-
-for year in range(2000,2019):
-    TST(year)

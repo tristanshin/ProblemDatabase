@@ -1,6 +1,13 @@
 import os
 os.chdir("L")
 
+def APMO(year):
+    for i in range(1,6):
+        filename = "APMO-" + str(year) + "-" + str(i) + ".tex"
+        lfile = open(filename,"w+")
+        lfile.write(str(year) + " APMO \#" + str(i))
+        lfile.close()
+
 def CCAMB(year):
     problems = []
     for i in range(1,16):
@@ -36,6 +43,18 @@ def OMO(contest):
     for i in range(1,31):
         lfile = open("OMO-" + season + "_20" + contest[-2:] + "-" + str(i) + ".tex","w+")
         lfile.write("OMO " + season + " 20" + contest[-2:] + " " + "\#" + str(i))
+        lfile.close()
+
+def RMM(year):
+    if year == 2014:
+        return
+    num = 6
+    if year in [2008,2009]:
+        num = 4
+    for i in range(1,num + 1):
+        filename = "RMM-" + str(year) + "-" + str(i) + ".tex"
+        lfile = open(filename,"w+")
+        lfile.write(str(year) + " RMM \#" + str(i))
         lfile.close()
 
 def SDHMMT(year):
@@ -96,5 +115,3 @@ def USAMO(year):
         lfile.write(str(year) + " USAMO \#" + str(i))
         lfile.close()
 
-for year in range(2000,2019):
-    TST(year)
