@@ -36,6 +36,18 @@ def EGMO(year):
         lfile.write(str(year) + " EGMO \#" + str(i))
         lfile.close()
 
+def ELMO(year):
+    num = 6
+    if year in [1999,2003]:
+        num = 4
+    if year == 2015:
+        num = 5
+    for i in range(1,num + 1):
+        filename = "ELMO-" + str(year) + "-" + str(i) + ".tex"
+        lfile = open(filename,"w+")
+        lfile.write(str(year) + " ELMO \#" + str(i))
+        lfile.close()
+
 def OMO(contest):
     season = "Fall"
     if contest[0] == "S":
@@ -115,3 +127,7 @@ def USAMO(year):
         lfile.write(str(year) + " USAMO \#" + str(i))
         lfile.close()
 
+for year in [1999,2003]:
+    ELMO(year)
+for year in range(2009,2019):
+    ELMO(year)

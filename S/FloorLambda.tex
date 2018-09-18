@@ -1,0 +1,15 @@
+The answer is $\lambda=\boxed{1+\sqrt{2}}$.
+
+Observe that \[2\lambda n\geq2\left\lfloor\lambda n\right\rfloor=1-n+\left\lfloor\lambda\left\lfloor\lambda n\right\rfloor\right\rfloor>-n+\lambda\left\lfloor\lambda n\right\rfloor>-n+\lambda\left(\lambda n-1\right),\] so \[\lambda>\left(\lambda^2-2\lambda-1\right)n\] for all $n\in\mathbb{N}$. If $\lambda^2-2\lambda-1>0$, then the RHS grows arbitrarily large, contradiction, so $\lambda^2-2\lambda-1\leq0$.
+
+Also observe that \[2\lambda n-2<2\left\lfloor\lambda n\right\rfloor=1-n+\left\lfloor\lambda\left\lfloor\lambda n\right\rfloor\right\rfloor\leq1-n+\lambda\left\lfloor\lambda n\right\rfloor\leq1-n+\lambda^2n,\] so \[3\geq-\left(\lambda^2-2\lambda-1\right)n\] for all $n\in\mathbb{N}$. If $\lambda^2-2\lambda-1<0$, then the RHS grows arbitrarily large, contradiction, so $\lambda^2-2\lambda-1\geq0$.
+
+Combining these gives that $\lambda^2-2\lambda-1=0$, so $\lambda=1+\sqrt{2}$ (the other root is negative) is the only possible value of $\lambda$.
+
+To show that this works, observe that
+\begin{align*}
+2\left\lfloor\left(1+\sqrt{2}\right)n\right\rfloor&=4n+2\left\lfloor\left(\sqrt{2}-1\right)n\right\rfloor\\
+1-n+\left\lfloor\left(1+\sqrt{2}\right)\left\lfloor\left(1+\sqrt{2}\right)n\right\rfloor\right\rfloor&=1-n+\left\lfloor\left(1+\sqrt{2}\right)\left(2n+\left\lfloor\left(\sqrt{2}-1\right)n\right\rfloor\right)\right\rfloor\\
+&=1+3n+\left\lfloor\left(2\sqrt{2}-2\right)n+\left(\sqrt{2}-1\right)\left\lfloor\left(\sqrt{2}-1\right)n\right\rfloor\right\rfloor+2\left\lfloor\left(\sqrt{2}-1\right)n\right\rfloor,
+\end{align*}
+so it suffices to prove that \[n-1=\left\lfloor\left(2\sqrt{2}-2\right)n+\left(\sqrt{2}-1\right)\left\lfloor\left(\sqrt{2}-1\right)n\right\rfloor\right\rfloor,\] equivalently \[n-1\leq\left(2\sqrt{2}-2\right)n+\left(\sqrt{2}-1\right)\left\lfloor\left(\sqrt{2}-1\right)n\right\rfloor<n.\] This rearranges to \[\left(\sqrt{2}-1\right)n-\left(1+\sqrt{2}\right)\leq\left\lfloor\left(\sqrt{2}-1\right)n\right\rfloor<\left(\sqrt{2}-1\right)n,\] which is equivalent to $0<\left\{\left(\sqrt{2}-1\right)n\right\}\leq1+\sqrt{2}$, which is clearly true.

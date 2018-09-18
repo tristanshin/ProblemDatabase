@@ -33,6 +33,17 @@ def EGMO(year):
         os.system("touch " + filename)
         os.system("open " + filename)
 
+def ELMO(year):
+    num = 6
+    if year in [1999,2003]:
+        num = 4
+    if year == 2015:
+        num = 5
+    for i in range(1,num + 1):
+        filename = "ELMO-" + str(year) + "-" + str(i) + ".tex"
+        os.system("touch " + filename)
+        os.system("open " + filename)
+
 def OMO(contest):
     path = "~/Dropbox/OMO/" + contest + "/problems"
     season = "Fall"
@@ -116,3 +127,8 @@ def USAMO(year):
         filename = "USAMO-" + str(year) + "-" + str(i) + ".tex"
         os.system("touch " + filename)
         os.system("open " + filename)
+
+for year in [1999,2003]:
+    ELMO(year)
+for year in range(2009,2014):
+    ELMO(year)
