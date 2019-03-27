@@ -1,0 +1,28 @@
+The answers are $f\left(x\right)=\boxed{0,x^2,-x^2}$. These clearly work since
+\begin{align*}
+	0+0&=0+0\\
+	\left(x^2-y^2\right)^2+2\left(xy\right)^2&=x^2\cdot x^2+\left(y^2\right)^2\\
+	-\left(-x^2+y^2\right)^2-2\left(xy\right)^2&=-x^2\cdot x^2-\left(y^2\right)^2
+\end{align*}
+so it suffices to prove that any solution must be one of these three.
+
+Let $P\left(x,y\right)$ denote the assertion that \[f\left(f\left(x\right)-f\left(y\right)\right)+2f\left(xy\right)=x^2f\left(y\right)+f\left(y^2\right).\]
+
+$P\left(0,0\right)$ implies \[3f\left(0\right)=f\left(0\right),\] so $f\left(0\right)=0$.
+
+$P\left(x,x\right)$ implies \[f\left(0\right)+2f\left(x^2\right)=x^2f\left(x\right)+f\left(x^2\right),\] so \[f\left(x^2\right)=x^2f\left(x\right).\tag{$\star$}\] Replacing $x$ with $-x$ gives $f\left(x^2\right)=x^2f\left(-x\right)$. Setting both sides equal, we have $x^2f\left(x\right)=x^2f\left(-x\right)$. If $x\neq0$, then $f\left(x\right)=f\left(-x\right)$ and thus $f$ is even.
+
+$P\left(x,0\right)$ implies \[f\left(f\left(x\right)-f\left(0\right)\right)+2f\left(0\right)=x^2f\left(x\right)+f\left(0\right),\] so \[f\left(f\left(x\right)\right)=x^2f\left(x\right)\tag{$\uplus$}.\] Taking $f$ of both sides in $(\uplus)$ gives \[f\left(f\left(f\left(x\right)\right)\right)=f\left(x^2f\left(x\right)\right)=f\left(f\left(x^2\right)\right)=x^4f\left(x^2\right)=x^6f\left(x\right)\] by applying $(\star)$, $(\uplus)$ on $x^2$, then $(\star)$ again. Using $(\uplus)$ on $f\left(x\right)$ gives \[f\left(f\left(f\left(x\right)\right)\right)=f\left(x\right)^2f\left(f\left(x\right)\right)=x^2f\left(x\right)^3\] by applying $(\uplus)$ again. Then \[x^6f\left(x\right)=x^2f\left(x\right)^3\tag{$\triangle$}\] for all $x\in\mathbb{R}$.
+
+Suppose that $f\left(a\right)=0$ for $a\neq0$. $P\left(\frac{x}{a},a\right)$ implies \[f\left(f\left(\frac{x}{a}\right)-f\left(a\right)\right)+2f\left(x\right)=\frac{x^2}{a^2}f\left(\frac{x}{a}\right)+f\left(a^2\right)=f\left(f\left(\frac{x}{a}\right)\right)+a^2f\left(a\right)\] by $(\uplus)$ and $(\star)$, so $f\left(x\right)=0$ for all $x\in\mathbb{R}$.
+
+Otherwise, $0$ is the only root of $f$, so we can consider $(\triangle)$ for $x\neq0$ and divide by $x^2f\left(x\right)$ to get \[f\left(x\right)^2=x^4\] for all $x\in\mathbb{R}\backslash\left\{0\right\}$. Then for all $x\in\mathbb{R}$, we have $f\left(x\right)\in\left\{x^2,-x^2\right\}$ ($0$ works because $0^2=-0^2=f\left(0\right)$).
+
+Now, suppose that $a,b\in\mathbb{R}$ such that and $f\left(a\right)=a^2$ and $f\left(b\right)=-b^2$. $P\left(a,b\right)$ implies \[f\left(f\left(a\right)-f\left(b\right)\right)+2f\left(ab\right)=a^2f\left(a\right)+f\left(b^2\right)=a^2f\left(a\right)+b^2f\left(b\right),\] so \[f\left(a^2+b^2\right)+2f\left(ab\right)=a^4-b^4.\]
+\begin{itemize}
+	\item If $f\left(a^2+b^2\right)=\left(a^2+b^2\right)^2$ and $f\left(ab\right)=a^2b^2$, then \[\left(a^2+b^2\right)^2+2a^2b^2=a^4-b^4\] and hence $4a^2b^2+2b^4=0$. If $b\neq0$, then $4a^2b^2\geq0$ and $2b^4>0$, contradiction. Thus $b=0$.
+	\item If $f\left(a^2+b^2\right)=\left(a^2+b^2\right)^2$ and $f\left(ab\right)=-a^2b^2$, then \[\left(a^2+b^2\right)^2-2a^2b^2=a^4-b^4\] and hence $2b^4=0$. Thus $b=0$.
+	\item If $f\left(a^2+b^2\right)=-\left(a^2+b^2\right)^2$ and $f\left(ab\right)=a^2b^2$, then \[-\left(a^2+b^2\right)^2+2a^2b^2=a^4-b^4\] and hence $a^4+3b^4=0$. If $b\neq0$, then $a^4\geq0$ and $3b^4>0$, contradiction. Thus $b=0$.
+	\item If $f\left(a^2+b^2\right)=-\left(a^2+b^2\right)^2$ and $f\left(ab\right)=-a^2b^2$, then \[\left(a^2+b^2\right)^2+2a^2b^2=a^4-b^4\] and hence $2a^4+4a^2b^2+4b^4=0$. If $b\neq0$, then $2a^4\geq0$, $4a^2b^2\geq0$, and $4b^4>0$, contradiction. Thus $b=0$.
+\end{itemize}
+In all cases, $b=0$. Thus, we have that either $f\left(x\right)=-x^2$ for all $x\in\mathbb{R}$ or $f\left(x\right)=x^2$ for all $x\in\mathbb{R}$, as desired.

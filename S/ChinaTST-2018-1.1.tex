@@ -1,0 +1,20 @@
+Let $x_1=x$ be variable. Suppose that we have determined $x_1,x_2,\ldots,x_j$. Then \[p\cdot\max\left\{x_j,x_{j+1}\right\}+q\cdot\min\left\{x_j,x_{j+1}\right\}=y_j.\]
+
+\begin{itemize}
+	
+	\item Suppose that $x_j=y_j$. If $x_{j+1}\neq y_j$, then the LHS is the positive weighted average of $x_j,x_{j+1}$ and thus is not $y_j$, so $x_{j+1}=y_j$.
+	
+	\item Suppose that $x_j>y_j$. If $x_{j+1}\geq y_j$, then the LHS is the positive weighted average of $x_j,x_{j+1}$ and thus is greater than $y_j$, so $x_{j+1}<y_j$. Then \[px_j+qx_{j+1}=y_j,\] so $x_{j+1}=\frac{y_j-px_j}{q}$.
+	
+	\item Suppose that $x_j<y_j$. If $x_{j+1}\leq y_j$, then the LHS is the positive weighted average of $x_j,x_{j+1}$ and thus is less than $y_j$, so $x_{j+1}>y_j$. Then \[px_{j+1}+qx_j=y_j,\] so $x_{j+1}=\frac{y_j-qx_j}{p}$.
+	
+\end{itemize}
+
+Define \[a_i\left(t\right)=\begin{cases}
+\frac{y_i-pt}{q} & \text{ if }t\geq y_i\\
+\frac{y_i-qt}{p} & \text{ if }t<y_i.
+\end{cases}\] Then \[x_j=a_{j-1}\circ a_{j-2}\circ\cdots\circ a_1\left(x\right).\] Observe that $a_i$ is continuous since it is linear on $\left(-\infty,y_j\right)$ and $\left[y_j,\infty\right)$ and the functions match up at $t=y_j$.
+
+In all cases, $x_{j+1}$ is uniquely determined, so given $x$ we can uniquely determine $x_1,x_2,\ldots,x_{2018}$. Now, let $f\left(x\right)$ be the value of $x_{2018}$ that is determined by setting $x_1=x$. Specifically, \[f\left(x\right)=a_{2017}\circ a_{2016}\circ\cdots\circ a_1\left(x\right).\] We wish to show that $f$ has a fixed point.
+
+If $x=\infty$, then $x_1=\infty,x_2=-\infty,x_3=\infty,\ldots,x_{2018}=-\infty$. If $x=-\infty$, then $x_1=-\infty,x_2=\infty,x_3=-\infty,\ldots,x_{2018}=\infty$. So $f\left(-\infty\right)=\infty$ and $f\left(\infty\right)=-\infty$ and $f$ is continuous since it is the convolution of continuous functions, so the Intermediate Value Theorem says that there is some $t$ for which $f\left(t\right)-t=0$. Then pick $x_1=t$ and we are good to go.

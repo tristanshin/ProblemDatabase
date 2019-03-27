@@ -1,0 +1,8 @@
+Replace $4$ by $n$. The answer is $\left(1+\frac{1}{n}\right)^n$, whence the answer to this problem is $\boxed{\frac{625}{256}}$.
+
+Let $E_k$ be the expected number of steps that Maryam takes after a step in which she rolled $k$. We can say that at the ``zeroth step,'' Maryam rolled $n+1$ and henceforth cannot roll this value --- this means that we wish to compute $E_{n+1}$. Maryam rolls the die, taking one step. There is a $\frac{1}{n}$ probability of rolling $j$ for $1\leq j<k$ and thus continuing the chain, while the other cases lead to no more steps. Thus, \[E_k=1+\frac{1}{n}\left(E_1+E_2+\ldots+E_{k-1}\right).\] When $1\leq k\leq n$, we can write
+\begin{align*}
+	nE_k&=1+E_1+E_2+\ldots+E_{k-1}\\
+	nE_{k+1}&=1+E_1+E_2+\ldots+E_{k-1}+E_k,
+\end{align*}
+so $E_{k+1}=\left(1+\frac{1}{n}\right)E_k$. Since $E_1=1$, we have that $E_k=\left(1+\frac{1}{n}\right)^{k-1}$ for $k=1,2,\ldots,n+1$. The answer follows.

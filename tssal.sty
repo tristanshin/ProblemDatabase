@@ -1,6 +1,18 @@
-\ProvidesPackage{tssal}[2018/09/02]
+\ProvidesPackage{tssal}[2018/10/02]
 
+% Options
+\newif\iftssaldraft
+\DeclareOption{draft}{\tssaldrafttrue}
 \ProcessOptions\relax
+
+\iftssaldraft
+	\usepackage{draftwatermark}
+	\SetWatermarkAngle{50}
+	\SetWatermarkLightness{0.75}
+	\SetWatermarkFontSize{32pt}
+	\SetWatermarkScale{5}
+	\SetWatermarkText{DRAFT}
+\fi
 
 % Useful Packages
 \usepackage[utf8]{inputenc}
@@ -112,6 +124,7 @@
 \usepackage{float}
 \usepackage{afterpage}
 \usepackage[colorinlistoftodos]{todonotes}
+\usepackage{enumitem}
 
 % Problem Database
 \newcommand{\pdb}[1]{\input{"/Users/tristan.shin/Google Drive/Math Stuff/ProblemDatabase/P/#1".tex}\unskip}
@@ -127,6 +140,8 @@
 \DeclareMathOperator{\cis}{cis}
 \DeclareMathOperator{\ord}{ord}
 \DeclareMathOperator{\sgn}{sgn}
+%\DeclareMathOperator{\sup}{sup}
+%\DeclareMathOperator{\inf}[inf}
 \DeclareMathOperator{\trace}{tr}
 \DeclareMathOperator{\complexs}{\mathbb{C}}
 \DeclareMathOperator{\reals}{\mathbb{R}}

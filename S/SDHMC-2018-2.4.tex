@@ -1,0 +1,33 @@
+We solve the problem with $2018$ replaced by any arbitrary constant $C$.
+
+\begin{solutionlemma}
+For any integer $k\geq4$, there exists $n\equiv2\pmod4$ such that $3^n\equiv-7\pmod{2^k}$.
+\end{solutionlemma}
+
+\begin{lemmaproof}
+First, we prove that $3^{2^{k-3}}\equiv2^{k-1}+1\pmod{2^k}$ for all integers $k\geq4$. We proceed by induction on $k$. Base case of $k=4$ is true because $3^2\equiv9\pmod{16}$. Now, suppose that the claim is true for some exponent $k\geq4$; we prove it for $k+1$. Write $3^{2^{k-3}}=j2^k+2^{k-1}+1$ for a positive integer $j$. Then \[3^{2^{k-2}}=j^22^{2k}+j2^{2k}+2^{2k-2}+j2^{k+1}+2^k+1\equiv2^k+1\pmod{2^{k+1}},\] so the inductive step is proven and hence this claim is true.
+
+Now, we prove the lemma by induction on $k$. Base case of $k=4$ is true because $3^2\equiv-7\pmod{16}$. Now, suppose that the claim is true for some exponent $k\geq4$; we prove it for $k+1$. By inductive hypothesis, take $d$ with $3^d=j2^k-7$ for a positive integer $j$. If $j$ is even, then we are done as $3^d\equiv-7\pmod{2^{k+1}}$ so pick $n=d$. So assume $j$ is odd. Then $3^d\equiv2^k-7\pmod{2^{k+1}}$. But then $3^{d+2^{k-2}}\equiv\left(2^k+1\right)\left(2^k-7\right)\equiv-7\pmod{2^{k+1}}$, so take $n=d+2^{k-2}$. Clearly $n$ is still $2\pmod4$, so the inductive step is proven and hence the lemma is true.
+\end{lemmaproof}
+
+\begin{solutionlemma}
+If $a_i\equiv-1\pmod{2^e}$ for some positive integer $e$, then $a_{i+2e-1}=\frac{3^ea_i+3^e-2^e}{2^{e-1}}$.
+\end{solutionlemma}
+
+\begin{lemmaproof}
+Induction on $e$. The base case of $e=1$ is true since $a_i$ is odd so $a_{i+1}=3a_i+1$. Now, suppose that the statement is true for $e$; we prove the statement for $e+1$. Take $a_i\equiv-1\pmod{2^{e+1}}$. Then $a_i\equiv-1\pmod{2^e}$, so the inductive hypothesis implies that $a_{i+2e-1}=\frac{3^ea_i+3^e-2^e}{2^{e-1}}$. Now, $3^ea_i+3^e-2^e\equiv-3^e+3^e-2^e\equiv2^e\pmod{2^{e+1}}$, so $a_{i+2e-1}$ is even and hence $a_{i+2e}=\frac{3^ea_i+3^e-2^e}{2^e}$, which is odd, so $a_{i+2e+1}=\frac{3^{e+1}a_i+3^{e+1}-3\cdot2^e}{2^e}+1=\frac{3^{e+1}a_i+3^{e+1}-2^{e+1}}{2^e}$. Then the inductive step is proven and hence the lemma is true.
+\end{lemmaproof}
+
+Now, set $k\geq4$ such that $\frac{2}{81}\left(\frac{3}{2}\right)^k>3^C$, then using this $k$ in the first lemma, produce an $n\equiv2\pmod4$ with $3^n\equiv-7\pmod{2^k}$. I claim that $m=2^n-1$ works. By the lemma with $e=n$, $a_{2n}=2\cdot3^n-2$, so $a_{2n+4}=\frac{3^n-1}{8}$ is odd since $3^n\equiv9\pmod{16}$. But now $a_{2n+4}\equiv-1\pmod{2^{k-3}}$ by choice of $n$, so the lemma now tells us that
+\begin{align*}
+	a_{2n+2k-3}&=\frac{3^{k-3}\left(\frac{3^n-1}{8}\right)+3^{k-3}-2^{k-3}}{2^{k-4}}\\
+	&\geq\frac{3^{k-3}\left(\frac{3^n-1}{8}\right)}{2^{k-4}}\\
+	&=\frac{2}{27}\left(\frac{3}{2}\right)^k\left(3^n-1\right)\\
+	&\geq\frac{2}{81}\left(\frac{3}{2}\right)^k3^n\\
+	&>3^{n+C},
+\end{align*}
+as desired.
+
+\begin{remark}
+When $C=2018$, the value of $m$ that we choose has around $4\cdot10^{1647}$ decimal digits.
+\end{remark}

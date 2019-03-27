@@ -1,0 +1,10 @@
+Given a tertiary string with no leading zeros, define a \emph{flip} to switch every digit $d$ to $2-d$, a \emph{left shift} to shift every digit one over to the left while fixing the point, and a \emph{cut} to remove all digits to the left of the point. Note that a left shift multiplies by $3$ and a cut takes the fractional part.
+
+With each $x\in\left[0,1\right]$ associate the tertiary string which has the same value as $x$. If $x$ has a terminating representation, use this string with the exception of $1$ being associated with $.222\ldots$ instead of $1$. Suppose that $x$ is associated with $.d_1d_2d_3\ldots$ in tertiary.
+\begin{itemize}
+	\item If $d_1=0$, then $f$ is a left shift followed by a flip.
+	\item If $d_1=1$, then $f$ is a left shift followed by a cut.
+	\item If $d_1=2$, then $f$ is a left shift followed by a flip.
+\end{itemize}
+Note that in the cases of $d_1=0,2$, there is no integer part left, so we can actually cut at the end. Since cuts and flips are commutative, we can say that the cut happens before the flip. Hence we can describe $f$ as a left shift, cut, then a flip \textbf{unless} the first digit after the point of $x$ is $1$ in which case there is no flip.
+Now with $\frac{1}{730}=\frac{728}{3^{12}-1}$, we have that $\frac{1}{730}$ is associated with $.\overline{000000222222}$ in tertiary. Since no digit is $1$ and no operation can make any digits $1$, we never have to worry about the first digit after the point being $1$. Thus, we just left shift, cut, then flip $2018$ times in a row. The left shifts and cuts mean we can ignore the first $2018$ digits (and move the point $2018$ places over). Since we flip an even number of times, it is as if we never flipped. Thus, after $2018$ iterations of $f$, we get the number \[.0000222222\overline{000000222222}=3^2\cdot\frac{1}{730}=\boxed{\frac{9}{730}}\] as desired.

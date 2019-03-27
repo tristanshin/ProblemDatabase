@@ -1,6 +1,15 @@
 import os
 os.chdir("P")
 
+def AIME(year,test):
+    for i in range(1,16):
+        if test == 1:
+            filename = "AIMEI-" + str(year) + "-" + str(i) + ".tex"
+        else:
+            filename = "AIMEII-" + str(year) + "-" + str(i) + ".tex"
+        os.system("touch " + filename)
+        os.system("open " + filename)
+
 def APMO(year):
     for i in range(1,6):
         filename = "APMO-" + str(year) + "-" + str(i) + ".tex"
@@ -128,7 +137,4 @@ def USAMO(year):
         os.system("touch " + filename)
         os.system("open " + filename)
 
-for year in [1999,2003]:
-    ELMO(year)
-for year in range(2009,2014):
-    ELMO(year)
+AIME(2019,2)

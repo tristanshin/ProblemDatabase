@@ -1,0 +1,19 @@
+\begin{center}
+	\begin{asy}
+		import olympiad;
+		size(15cm);
+		pair A=(0,12), B=(-5,0), C=(9,0), M=(B+C)/2, D=foot(A,B,C), E=foot(B,A,M), P=(-1742/1873,-6469/1873), Q=extension(B,P,A,C), H=extension(A,D,B,E), R=extension(H,Q,B,B+(0,1)), O=circumcenter(A,B,C), N=(A+C)/2, NN=foot(N,B,C);
+		fill(A--B--C--cycle,rgb(210,180,140));
+		dot(A); dot(B); dot(C); dot(M); dot(D); dot(E); dot(P); dot(Q); dot(H); dot(R); dot(N); dot(NN);
+		draw(A--B--C); draw(A--Q,blue);
+		draw(circumcircle(A,B,C)); draw(circumcircle(B,M,P)); draw(circumcircle(A,D,C),green);
+		draw(A--M); draw(A--D); draw(B--E); draw(B--Q,blue); draw(R--Q,blue); draw(B--R,red); draw(R--N--NN,red+dashed);
+		label("$A$",A,dir(A-O)); label("$B$",B,dir(B-O)); label("$C$",C+(0,0.4),dir(C-O)); label("$M$",M+(0,0.2),SE); label("$P$",P,dir(P-O)); label("$H$",H,dir(O-H)); label("$Q$",Q,dir(Q-O)); label("$R$",R,dir(90)); label("$D$",D,S); label("$E$",E,dir(90)*dir(M-E)); label("$N$",N,dir(N-O)); label("$N'$",NN,NE);
+	\end{asy}
+\end{center}
+
+Let $D=AH\cap BC$, $E=BH\cap AM$. Then $AEDB$ is cyclic since $\angle{AEB}=\angle{ADB}=\frac{\pi}{2}$ so $HA\cdot HD=HB\cdot HE$. But $HA\cdot HD$ is the power of $H$ with respect to $\left(AC\right)$ and $HB\cdot HE$ is the power of $H$ with respect to $\left(BM\right)$ so $H$ lies on the radical axis of $\left(AC\right)$ and $\left(BM\right)$. Note that $Q=BP\cap AC$ is the radical center of $\left(ABC\right)$, $\left(AC\right)$, and $\left(BM\right)$, so $HQ$ is the radical axis of $\left(AC\right)$ and $\left(BM\right)$ and thus $R$ lies on this radical axis too. But the power of $R$ with respect to $\left(BM\right)$ is $RB^2$ and the power of $R$ with respect to $\left(AC\right)$ is $RN^2-\frac{AC^2}{4}=RN^2-\frac{225}{4}$ (where $N$ is the midpoint of $AC$), so \[RB^2=RN^2-\frac{225}{4}.\]
+
+Let $N'$ be the projection of $N$ onto $BC$. Then $N'C=\frac{9}{2}$, so $BN'=\frac{19}{2}$. Also $NN'=6$. Then $NN'BR$ is a right trapezoid with bases $6$ and $RB$, height $\frac{19}{2}$, and slant $RN$, so \[RN^2=\left(RB-6\right)^2+\frac{361}{4}.\]
+
+Combining these, we deduce that \[RB^2=\left(RB-6\right)^2+\frac{361}{4}-\frac{225}{4}=RB^2-12RB+70,\] so $RB=\boxed{\frac{35}{6}}$.

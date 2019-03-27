@@ -1,6 +1,18 @@
 import os
 os.chdir("L")
 
+def AIME(year,test):
+    for i in range(1,16):
+        if test == 1:
+            filename = "AIMEI-" + str(year) + "-" + str(i) + ".tex"
+            lfile = open(filename,"w+")
+            lfile.write(str(year) + " AIME I \#" + str(i))
+        else:
+            filename = "AIMEII-" + str(year) + "-" + str(i) + ".tex"
+            lfile = open(filename,"w+")
+            lfile.write(str(year) + " AIME II \#" + str(i))
+        lfile.close()
+
 def APMO(year):
     for i in range(1,6):
         filename = "APMO-" + str(year) + "-" + str(i) + ".tex"
@@ -127,7 +139,4 @@ def USAMO(year):
         lfile.write(str(year) + " USAMO \#" + str(i))
         lfile.close()
 
-for year in [1999,2003]:
-    ELMO(year)
-for year in range(2009,2019):
-    ELMO(year)
+AIME(2019,2)
