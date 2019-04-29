@@ -38,6 +38,14 @@ def CCAMB(year):
         lfile.write(str(year) + " CCAMB " + problem)
         lfile.close()
 
+def CGMO(year):
+    num = 8
+    for i in range(1,num + 1):
+        filename = "CGMO-" + str(year) + "-" + str(i) + ".tex"
+        lfile = open(filename,"w+")
+        lfile.write(str(year) + " CGMO \#" + str(i))
+        lfile.close()
+
 def EGMO(year):
     num = 6
     if year == 2012:
@@ -81,11 +89,11 @@ def RMM(year):
         lfile.write(str(year) + " RMM \#" + str(i))
         lfile.close()
 
-def SDHMMT(year):
+def SDHMMTTST(year):
     for i in range(1,11):
-        filename = "SDHMMT-" + str(year) + "-" + str(i) + ".tex"
+        filename = "SDHMMTTST-" + str(year) + "-" + str(i) + ".tex"
         lfile = open(filename,"w+")
-        lfile.write(str(year) + " SDHMMT \#" + str(i))
+        lfile.write(str(year) + " SDHMMT TST \#" + str(i))
         lfile.close()
 
 def TARML(year):
@@ -139,4 +147,4 @@ def USAMO(year):
         lfile.write(str(year) + " USAMO \#" + str(i))
         lfile.close()
 
-AIME(2019,2)
+SDHMMTTST(2019)

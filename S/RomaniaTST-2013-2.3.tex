@@ -1,0 +1,5 @@
+\textbf{Claim:} Every prime that is $5$ or $\pm1\pmod5$ is in $S$.
+
+Proof: We prove the claim by induction. Observe that $5=\frac{2^2+2-1}{1^2+1-1}$ so $5$ works. Now let $p>5$ be a $\pm1\pmod5$ prime and suppose that all smaller $\pm1\pmod5$ primes work. Choose a positive integer $n<p$ such that $n^2\equiv5\pmod p$; since $n$ and $p-n$ have opposite parity we may pick $n$ odd. Let $m=\frac{n-1}{2}$ such that $m^2+m-1\equiv0\pmod p$. Then $0<m^2+m-1<p^2$ so $p$ divides $m^2+m-1$ exactly once and no primes larger than $p$ divide $m^2+m-1$. But any prime divisor of $m^2+m-1$ must be $5$ or $\pm1\pmod5$, so we may apply the inductive hypothesis to divide out all the other prime factors of $m^2+m-1$ until we are left with a valid representation of $p$. $\square$
+
+The conclusion follows because there are infinitely many $1\pmod5$ primes by Dirichlet.

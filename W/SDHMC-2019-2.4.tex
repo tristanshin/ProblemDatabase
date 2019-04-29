@@ -1,0 +1,29 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage{../tssal}
+
+\title{2019 SDHMC Part II \#4}
+\author{Tristan Shin}
+\date{20 Apr 2019}
+
+\begin{document}
+
+\maketitle
+
+\pdb{SDHMC-2019-2.4}
+
+\hrulefill
+
+\begin{solution}
+\sdb{SDHMC-2019-2.4}
+\end{solution}
+
+\begin{remark}
+In fact, we can construct sets that work when $n$ is a power of $2$. First, when $n=2$ we have that $\{1,4\}$ and $\{2,3\}$ work. Now, suppose $A_k$ and $B_k$ work when $n=2^k$. Consider the sets
+\begin{align*}
+	A_{k+1}&=A_k\cup\{b+2^{k+1}\mid b\in B_k\}\\
+	B_{k+1}&=B_k\cup\{a+2^{k+1}\mid a\in A_k\}
+\end{align*}
+defined recursively. One can verify the polynomial identity inductively to show that this works.
+\end{remark}
+
+\end{document}

@@ -1,0 +1,7 @@
+The answer is $P(t)=c(t^2+3)$ for any real constant $c$. This can be directly confirmed to work using the identity $x^3+y^3+z^3-3xyz=\frac{1}{2}(x+y+z)((x-y)^2+(y-z)^2+(z-x)^2)$.
+
+Rewrite the condition as \[xP(x)+yP(y)+zP(z)=xyz(P(x-y)+P(y-z)+P(z-x)\] for all nonzero real numbers $x,y,z$ satisfying $2xyz=x+y+z$. By taking limits (both sides are continuous and so is the constraint surface), we can allow any real numbers satisfying $2xyz=x+y+z$. Let $(x,y,z)=(x,-x,0)$, then we deduce $xP(x)-xP(-x)=0$ so $P$ is even.
+
+Now let $(x,y,z)=(a,b,a+b)$ for $ab=1$. We get \[aP(a)+bP(b)+(a+b)P(a+b)=(a+b)(P(a-b)+P(a)+P(b))\] equivalently \[(a+b)P(a+b)=(a+b)P(a-b)+bP(a)+aP(b).\] Let $P(t)=\displaystyle\sum_{k=0}^na_kt^k$ for some even $n$ (note that $a_{n-1}=0$); assume $n>2$. Let $a=x,b=\frac{1}{x}$ and consider the $x^{n-1}$ coefficient of each side. On the LHS, it is $(n+1)a_n+(n-1)a_{n-2}$. On the RHS, it is $-(n-1)a_n+(n-1)a_{n-2}+a_n$, so $(2n-1)a_n=0$, contradiction. Thus $n\leq2$.
+
+So $ab=1$ implies \[a_2[(a+b)^3-(a+b)(a-b)^2-a^2b-ab^2]+a_0[-b-a]=0\] so $3a_2(a+b)-(a+b)a_0=0$ for all $ab=1$. It follows that $a_0=3a_2$, so $P$ takes the form $c(t^2+3)$ as desired.

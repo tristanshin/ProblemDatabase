@@ -1,0 +1,41 @@
+For a positive integer $n$, define the following sets:
+\begin{align*}
+	D_n&=\left\{d\in\mathbb{N}\mid d\text{ divides }n\right\}\\
+	R_n&=\left\{d\in\mathbb{N}\mid d\text{ divides }n\text{, }d\text{ special}\right\}\\
+	S_n&=\left\{d\in\mathbb{N}\mid d\text{ divides }n\text{, }d<\sqrt{n}\right\}\\
+	T_n&=\left\{d\in\mathbb{N}\mid d\text{ divides }n\text{, }d>\sqrt{n}\right\}\\
+\end{align*}
+Note that $\left|D_n\right|=\left|S_n\right|+\left|T_n\right|$ if $n$ is not a perfect square and $\left|S_n\right|+\left|T_n\right|+1$ if it is.
+
+I claim that there is a bijection between $S_n$ and $T_n$. Define $f:S_n\to T_n$ as $f\left(d\right)=\frac{n}{d}$. This is possible because $d<\sqrt{n}$ implies $\frac{n}{d}>\sqrt{n}$. Then $f$ is an injection because $f\left(a\right)=f\left(b\right)$ implies $\frac{n}{a}=\frac{n}{b}$ implies $a=b$ and $f$ is a surjection because for $e\in T_n$, we can pick $\frac{n}{e}\in S_n$ with $f\left(\frac{n}{e}\right)=e$. So $f$ is a bijection so $\left|S_n\right|=\left|T_n\right|$. In particular,
+\begin{itemize}
+	\item $\frac{\left|S_n\right|}{\left|D_n\right|}\leq\frac{1}{2}$ with equality precisely when $n$ is not a perfect square.
+	\item $\left|D_n\right|=2\left|S_n\right|$ if $n$ is not a perfect square and $2\left|S_n\right|+1$ if it is.
+\end{itemize}
+
+Next, I claim that $R_n\subseteq S_n$. Suppose $d\in R_n$. Then $\lcm\left(d,d+1\right)=d^2+d$ divides $n$. Then \[d<\sqrt{d^2+d}\leq\sqrt{n}\] so $d\in S_n$. Thus $R_n\subseteq S_n$.
+
+\begin{enumerate}[label=(\alph*)]
+	\item \[\frac{\left|R_n\right|}{\left|D_n\right|}\leq\frac{\left|S_n\right|}{\left|D_n\right|}\leq\frac{1}{2}\]
+	\item The answer is $n=\boxed{2,6,12}$ which we can check because:
+	\begin{itemize}
+		\item $2$ has $2$ positive divisors ($1,2$), $1$ of which is special ($1$).
+		\item $6$ has $4$ positive divisors ($1,2,3,6$), $2$ of which are special ($2$).
+		\item $12$ has $6$ positive divisors ($1,2,3,4,6,12$), $3$ of which are special ($1,2,3$).
+	\end{itemize}
+	Now we show that $n\in\left\{2,6,12\right\}$.
+	
+	We need equality to hold in both inequalities in (a), so $\left|R_n\right|=\left|S_n\right|$ and $n$ is not a perfect square. Since $R_n\subseteq S_n$ and $\left|R_n\right|=\left|S_n\right|<\infty$, $R_n=S_n$. So every divisor of $n$ less than $\sqrt{n}$ is special. Let $m=\left\lfloor\sqrt{n}\right\rfloor$.
+	
+	I claim that $k$ divides $n$ for $k=1,\ldots,m+1$. We prove this by induction on $k$. The base case of $k=1$ is trivial. Now, if $k$ divides $n$ with $k\in\left\{1,\ldots,m\right\}$, then $k\leq m<\sqrt{n}$ so $k$ is special and thus $k+1$ divides $n$. Thus by induction, $1,\ldots,m+1$ all divide $n$.
+	
+	Now suppose $m\geq2$. Then $m-1,m,m+1$ divides $n$. If $m$ is even then $\lcm\left(m-1,m,m+1\right)=m^3-m$ while if $m$ is odd then $\lcm\left(m-1,m,m+1\right)=\frac{m^3-m}{2}$. Either way, $\frac{m^3-m}{2}\leq n$. But since $m=\left\lfloor\sqrt{n}\right\rfloor$, $n\leq m^2+2m$ so \[\frac{m^3-m}{2}\leq m^2+2m\] and thus \[0\geq m^3-2m^2-5m=m\left(m+\sqrt{6}-1\right)\left(m-\sqrt{6}-1\right).\] Since $m\geq2$, this implies $m\leq\sqrt{6}+1<4$ so $m=2$ or $3$. Thus $m\in\left\{1,2,3\right\}$.
+	
+	We now casework on $m$.
+	\begin{itemize}
+		\item $m=1$. Then $1,2$ divide $n$ and $1\leq n\leq3$. So $n=2$.
+		\item $m=2$. Then $1,2,3$ divide $n$ and $4\leq n\leq8$. So $n=6$.
+		\item $m=3$. Then $1,2,3,4$ divide $n$ and $9\leq n\leq15$. So $n=12$.
+	\end{itemize}
+	Thus $n\in\left\{2,6,12\right\}$ as desired.
+\end{enumerate}

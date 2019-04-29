@@ -1,0 +1,10 @@
+Let $E_k$ be the expected amount of time left if Alex has just walked $k$ consecutive segments in the same direction, so we want $E_0$. Then $E_0=1+E_1$, $E_5=0$, and \[E_k=1+\frac{1}{2}E_{k+1}+\frac{1}{2}E_1\] for $k=1,2,3,4$. Solving this, we get
+	\begin{align*}
+		E_0&=1+E_1\\
+		E_1&=2+E_2\\
+		E_2&=4+E_3\\
+		E_3&=8+E_4\\
+		E_4&=16+E_5\\
+		E_5&=0
+	\end{align*}
+	so $E_0=1+2+4+8+16=\boxed{31}$. In general, if Alex were walking around an $n$-gon instead, the answer would be $2^n-1$.

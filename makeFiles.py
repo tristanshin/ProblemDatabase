@@ -33,6 +33,13 @@ def CCAMB(year):
         os.system("touch " + filename)
         os.system("open " + filename)
 
+def CGMO(year):
+    num = 8
+    for i in range(1,num + 1):
+        filename = "CGMO-" + str(year) + "-" + str(i) + ".tex"
+        os.system("touch " + filename)
+        os.system("open " + filename)
+
 def EGMO(year):
     num = 6
     if year == 2012:
@@ -87,9 +94,9 @@ def RMM(year):
         os.system("touch " + filename)
         os.system("open " + filename)
 
-def SDHMMT(year):
+def SDHMMTTST(year):
     for i in range(1,11):
-        filename = "SDHMMT-" + str(year) + "-" + str(i) + ".tex"
+        filename = "SDHMMTTST-" + str(year) + "-" + str(i) + ".tex"
         os.system("touch " + filename)
         os.system("open " + filename)
 
@@ -137,4 +144,4 @@ def USAMO(year):
         os.system("touch " + filename)
         os.system("open " + filename)
 
-AIME(2019,2)
+SDHMMTTST(2019)
