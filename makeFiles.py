@@ -144,4 +144,4 @@ def USAMO(year):
         os.system("touch " + filename)
         os.system("open " + filename)
 
-SDHMMTTST(2019)
+TSTST(2019)

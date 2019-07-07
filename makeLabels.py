@@ -147,4 +147,4 @@ def USAMO(year):
         lfile.write(str(year) + " USAMO \#" + str(i))
         lfile.close()
 
-SDHMMTTST(2019)
+TSTST(2019)

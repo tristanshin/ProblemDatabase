@@ -1,0 +1,9 @@
+Let $c>0$. Write
+\begin{align*}
+	\sum_{k=1}^na_k^{c+1+n-k}&=\sum_{k=1}^n\frac{(c+n-k)a_k^{c+1+n-k}+1}{c+n-k}-\sum_{k=1}^n\frac{1}{c+n-k}\\
+	&\geq\sum_{k=1}^n\frac{(c+1+n-k)a_k^{c+n-k}}{c+n-k}-\sum_{k=1}^n\frac{1}{c+n-k}\\
+	&=\sum_{k=1}^na_k^{c+n-k}a_k+\sum_{k=1}^n\frac{a_k^{c+n-k}+c-1+n-k}{c+n-k}-\sum_{k=1}^n\frac{c-1+n-k}{c+n-k}-\sum_{k=1}^n\frac{1}{c+n-k}\\
+	&\geq\sum_{k=1}^na_k^{c+n-k}+\sum_{k=1}^na_k-n\\
+	&\geq\sum_{k=1}^na_k^{c+n-k}
+\end{align*}
+so $P_{c+1}\geq P_c$. And for $c=0$, we can take limits as $P_{c+1}-P_c$ is continuous. Thus $P_0,P_1,P_2,\ldots$ is nondecreasing.

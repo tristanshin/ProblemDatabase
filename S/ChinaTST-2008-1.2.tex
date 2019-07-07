@@ -1,0 +1,8 @@
+For any prime $p\mid n$, observe that
+\begin{align*}
+	\sum_{i=1}^ni^{\varphi(n)}&=\sum_{j=0}^{n/p-1}\sum_{i=0}^{p-1}(pj+i)^{\varphi(n)}\\
+	&\equiv\sum_{j=0}^{n/p-1}\sum_{i=0}^{p-1}i^{\varphi(n)}\pmod p\\
+	&\equiv\frac{n}{p}\cdot\left(p-1\right)\pmod p\\
+	&\equiv-\frac{n}{p}\pmod p
+\end{align*}
+since $p-1\mid\varphi(n)$, so $\frac{n}{p}+1\equiv0\pmod p$ for all primes $p$ dividing $n$ (note that this implies $p^2\nmid n$). Since $\frac{n}{q}\equiv0\pmod p$ for any prime $q\neq p$, we deduce that \[\frac{n}{p_1}+\frac{n}{p_2}+\ldots+\frac{n}{p_k}+1\] is divisible by $p_1p_2\cdots p_k=n$. In other words, $\frac{1}{p_1}+\frac{1}{p_2}+\ldots+\frac{1}{p_k}+\frac{1}{p_1p_2\cdots p_k}$ is an integer.

@@ -1,0 +1,12 @@
+We prove the stronger statement that \[\sum_{k=1}^na_k^{n+c+1-k}\geq\sum_{k=1}^na_k^{n+c-k}\] for any $c>0$.
+
+Write
+\begin{align*}
+	\sum_{k=1}^na_k^{n+c+1-k}&=\sum_{k=1}^n\frac{(n+c-k)a_k^{n+c+1-k}+1}{n+c-k}-\sum_{k=1}^n\frac{1}{n+c-k}\\
+	&\geq\sum_{k=1}^n\frac{(n+c+1-k)a_k^{n+c-k}}{n+c-k}-\sum_{k=1}^n\frac{1}{n+c-k}\\
+	&=\sum_{k=1}^na_k^{n+c+k}a_k+\sum_{k=1}^n\frac{a_k^{n+c-k}+n+c-1-k}{n+c-k}-\sum_{k=1}^n\frac{n+c-1-k}{n+c-k}-\sum_{k=1}^n\frac{1}{n+c-k}\\
+	&\geq\sum_{k=1}^na_k^{n+c-k}+\sum_{k=1}^na_k-n\\
+	&\geq\sum_{k=1}^na_k^{n+c-k}+n\prod_{k=1}^na_k^{1/n}-n\\
+	&\geq\sum_{k=1}^na_k^{n+c-k}
+\end{align*}
+as desired.
