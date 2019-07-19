@@ -60,6 +60,12 @@ def ELMO(year):
         os.system("touch " + filename)
         os.system("open " + filename)
 
+def IMO(year):
+    for i in range(1,7):
+        filename = "IMO-" + str(year) + "-" + str(i) + ".tex"
+        os.system("touch " + filename)
+        os.system("open " + filename)
+
 def OMO(contest):
     path = "~/Dropbox/OMO/" + contest + "/problems"
     season = "Fall"
@@ -144,4 +150,4 @@ def USAMO(year):
         os.system("touch " + filename)
         os.system("open " + filename)
 
-TSTST(2019)
+IMO(2019)

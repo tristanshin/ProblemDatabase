@@ -37,26 +37,26 @@ def write(problem):
     L_EXIST = len(LSearch) > 0
     W_EXIST = len(WSearch) > 0
     ready = True
+    Pready = True
     if not P_EXIST:
         print("Please write problem file.")
-        os.chdir("P")
-        os.system("touch " + problem + ".tex")
-        os.system("open " + problem + ".tex")
-        os.chdir("..")
+        Pready = False
         ready = False
     if not S_EXIST:
         print("Please write solution file.")
-        os.chdir("S")
-        os.system("touch " + problem + ".tex")
-        os.system("open " + problem + ".tex")
-        os.chdir("..")
+        if Pready:
+            os.chdir("S")
+            os.system("touch " + problem + ".tex")
+            os.system("open " + problem + ".tex")
+            os.chdir("..")
         ready = False
     if not L_EXIST:
         print("Please write label file.")
-        os.chdir("L")
-        os.system("touch " + problem + ".tex")
-        os.system("open " + problem + ".tex")
-        os.chdir("..")
+        if Pready:
+            os.chdir("L")
+            os.system("touch " + problem + ".tex")
+            os.system("open " + problem + ".tex")
+            os.chdir("..")
         ready = False
     if ready and not W_EXIST:
         os.chdir("L")
