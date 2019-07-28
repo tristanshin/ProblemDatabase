@@ -1,0 +1,11 @@
+Let $x$ be in $c_x$ of the $T_i$.
+
+\begin{claim}
+If $x\notin T_i$, then $c_x\geq\abs{T_i}$.
+\end{claim}
+
+\begin{lemmaproof}
+Take $y\in T_i$, then the unique $T_j$ with both $x,y$ is not $T_i$. Furthermore, these $T_j$ are distinct for the different $y$, so there are at least $\abs{T_i}$ of them.
+\end{lemmaproof}
+
+Let $Q$ be the set of all $\paren{x,i}$ with $x\notin T_i$. Then compute \[1=\displaystyle\sum_{x=1}^n\frac{1}{n}=\displaystyle\sum_{x=1}^n\frac{1}{n}\displaystyle\sum_{T_i\not\ni x}\frac{1}{m-c_x}=\displaystyle\sum_{x=1}^n\displaystyle\sum_{T_i\not\in x}\frac{1}{n\paren{m-c_x}}=\displaystyle\sum_{\paren{x,i}\in Q}\frac{1}{mn-nc_x}\] and \[1=\displaystyle\sum_{i=1}^m\frac{1}{m}=\displaystyle\sum_{i=1}^m\frac{1}{m}\displaystyle\sum_{x\notin T_i}\frac{1}{n-\abs{T_i}}=\displaystyle\sum_{i=1}^m\displaystyle\sum_{x\notin T_i}\frac{1}{m\paren{n-\abs{T_i}}}=\displaystyle\sum_{\paren{x,i}\in Q}\frac{1}{mn-m\abs{T_i}}.\] If $m<n$, then each term of the first sum is strictly larger than the corresponding term of the second sum, contradiction. Thus, $m\geq n$.

@@ -2,6 +2,7 @@ import os
 import fnmatch
 import datetime
 import glob
+import sys
 
 def find_all(name, path):
     result = []
@@ -44,11 +45,6 @@ def write(problem):
         ready = False
     if not S_EXIST:
         print("Please write solution file.")
-        if Pready:
-            os.chdir("S")
-            os.system("touch " + problem + ".tex")
-            os.system("open " + problem + ".tex")
-            os.chdir("..")
         ready = False
     if not L_EXIST:
         print("Please write label file.")
@@ -67,7 +63,7 @@ def write(problem):
         os.chdir("W")
         writeup = open(problem + ".tex","w+")
         writeup.write("\\documentclass[a4paper, 12pt]{article}\n")
-        writeup.write("\\usepackage{../tssal}\n")
+        writeup.write("\\usepackage{tssal}\n")
         writeup.write("\n")
         writeup.write("\\title{" + title + "}\n")
         writeup.write("\\author{Tristan Shin}\n")
@@ -112,6 +108,7 @@ def write(problem):
         os.system("open " + problem + ".pdf")
         os.chdir("..")
 
-problem = input("PROBLEM :: ")
+# problem = input("PROBLEM :: ")
+problem = sys.argv[1]
 if " " not in problem:
     write(problem)

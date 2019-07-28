@@ -1,0 +1,48 @@
+Let $Q_n$ be the graph on all binary strings of length $n$ with edges between Hamming neighbors (this is the \emph{hypbercube graph}). Let $H$ be the subgraph induced by those vertices which are given and $\Delta(H)$ be the maximum degree of $H$. We wish to show that $\Delta(H)\geq\sqrt{n}$.
+
+We will also use the notation that for a $K\times K$ matrix $M$ and positive integer $k\leq M$, $\lambda_k(M)$ is the $k$th largest eigenvalue of $M$.
+
+Define a sequence of matrices as \[A_1=
+\begin{bmatrix}
+	0 & 1 \\
+	1 & 0
+\end{bmatrix}
+,\qquad A_n=
+\begin{bmatrix}
+	A_{n-1} & I \\
+	I & -A_{n-1}
+\end{bmatrix}
+.\]
+
+\begin{claim}
+$A_n$ has eigenvalues $\sqrt{n}$ and $-\sqrt{n}$, both with multiplicity $2^{n-1}$.
+\end{claim}
+
+\begin{lemmaproof}
+First we show that $A_n^2=nI$ by induction on $n$. This is clear for $n=1$. Now, assume that $A_n^2=nI$. Then \[A_{n+1}^2=
+\begin{bmatrix}
+	A_n^2+I & 0 \\
+	0 & A_n^2+I
+\end{bmatrix}
+=nI\] so the inductive step is true. So $A_n^2=nI$ and thus all eigenvalues of $A_n$ are $\sqrt{n}$ or $-\sqrt{n}$. But $\operatorname{tr}(A_n)=0$ so there must be an equal number of $\sqrt{n}$ as there are $-\sqrt{n}$.
+\end{lemmaproof}
+
+Now observe by the construction of sequence $A_n$ that $A_n$ and the adjacency matrix of $Q_n$ are the same up to sign of each term. So we can index $A_n$ by the binary strings of length $n$ in the corresponding way. Let $A_H$ be the $(2^{n-1}+1)\times(2^{n-1}+1)$ submatrix of $A_n$ induced by the given strings. Let $\vecb{v}$ be the eigenvector corresponding to $\lambda_1(A_H)$, and let $s$ be the string with maximum coordinate in $\vecb{v}$ (say this coordinate is $v_s$). Then
+\begin{align*}
+	|\lambda_1(A_H)||v_s|&=|\lambda_1(A_H)v_s|\\
+	&=|(A_H\vecb{v})_s|\\
+	&=\left|\sum_{t\in H}A_{s,t}v_t\right|\\
+	&=\left|\sum_{t\in N(s)}A_{s,t}v_t\right|\\
+	&\leq\sum_{t\in N(s)}|A_{s,t}||v_t|\\
+	&\leq|N(s)||v_s|\\
+	&\leq\Delta(H)|v_s|
+\end{align*}
+whence $\Delta(H)\geq\lambda_1(A_H)$.
+
+Now, we use Cauchy's interlace theorem which states the following:
+
+\begin{theorem*}{Cauchy's Interlace Theorem}{}
+Let $A$ be a symmetric $N\times N$ matrix and $B$ be a $M\times M$ principal submatrix of $A$. Then for $i=1,\ldots,m$, \[\lambda_i(A)\geq\lambda_i(B)\geq\lambda_{i+N-M}(A).\]
+\end{theorem*}
+
+With $A=A_n$ ($N=2^n$), $B=A_H$ ($M=2^{n-1}+1$), and $i=1$, we deduce that \[\Delta(H)\geq\lambda_1(A_H)\geq\lambda_{2^{n-1}}(A_n)=\sqrt{n}\] as desired.

@@ -1,0 +1,5 @@
+Let the sum be $S$ and write $F_{2k-1}^2-1=F_{2k-2}F_{2k}$, so \[S=\frac{1}{2}+\displaystyle\sum_{k=2}^{\infty}\frac{F_{2k-1}-1}{F_{2k-2}F_{2k}}.\] Now, observe that $\frac{1}{F_{2k-2}}-\frac{1}{F_{2k}}=\frac{F_{2k-1}}{F_{2k-2}F_{2k}}$, so \[S=\frac{1}{2}+\displaystyle\sum_{k=2}^{\infty}\left(\frac{1}{F_{2k-2}}-\frac{1}{F_{2k}}\right)-\displaystyle\sum_{k=2}^{\infty}\frac{1}{F_{2k-2}F_{2k}}=\frac{3}{2}-\displaystyle\sum_{k=2}^{\infty}\frac{1}{F_{2k-2}F_{2k}}.\]
+
+Next, I claim that $\displaystyle\sum_{k=2}^n\frac{1}{F_{2k-2}F_{2k}}=\frac{F_{2n-2}}{F_{2n}}$ for $n\geq2$. We induct on $n$; clearly $n=2$ works. So it suffices to prove that \[\frac{F_{2n-2}}{F_{2n}}+\frac{1}{F_{2n}F_{2n+2}}=\frac{F_{2n}}{F_{2n+2}},\] equivalently \[F_{2n-2}F_{2n+2}+1=F_{2n}^2.\] But this is a well-known identity, so this claim is true.
+
+Then $\displaystyle\sum_{k=2}^{\infty}\frac{1}{F_{2k-2}F_{2k}}=\displaystyle\lim_{n\to\infty}\frac{F_{2n-2}}{F_{2n}}=\frac{3-\sqrt{5}}{2}$, so we have that \[S=\frac{3}{2}-\frac{3-\sqrt{5}}{2}=\boxed{\frac{\sqrt{5}}{2}}.\]

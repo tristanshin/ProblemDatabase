@@ -1,0 +1,35 @@
+Let us try to dissect the square $\paren{0,0},\paren{1,0},\paren{1,1},\paren{0,1}$ into $n$ triangles.
+
+Color the plane into blue, green, and red with $\paren{x,y}$ colored:
+\begin{itemize}
+
+    \color{blue}
+    \item blue if $\abs{x}_2\geq\abs{y}_2$ and $\abs{x}_2\geq1$
+    
+    \color{green}
+    \item green if $\abs{y}_2>\abs{x}_2$ and $\abs{y}_2\geq1$
+    
+    \color{red}
+    \item red if $\abs{x}_2<1$ and $\abs{y}_2<1$
+    
+\end{itemize}
+
+Consider three differently-colored points $\paren{a,b}$ (blue), $\paren{c,d}$ (green), $\paren{e,f}$ (red). Compute \[D=\begin{vmatrix}
+a & b & 1 \\
+c & d & 1 \\
+e & f & 1
+\end{vmatrix}=cf-de-af+be+ad-bc.\] Confirm $\abs{cf}_2<\abs{ad}_2$, $\abs{de}_2<\abs{ad}_2$, $\abs{af}_2<\abs{ad}_2$, $\abs{be}_2<\abs{ad}_2$, $\abs{ad}_2\geq1$, and $\abs{bc}_2<\abs{ad}_2$, so \[\abs{D}_2=\abs{cf-de-af+be+ad-bc}_2=\abs{ad}_2\geq1.\] Then $D\neq0$, so by Shoelace Formula, the triangle has positive area. \textbf{Thus, any line contains at most two colors.} We can thus refer to any set of three differently-colored points as a ``rainbow'' triangle.
+
+\begin{solutionlemma}
+Every dissection contains an odd number of rainbow triangles.
+\end{solutionlemma}
+
+\begin{lemmaproof}
+Look at the red-blue segments.
+
+First, we count the red-blue segments on the boundary. Since $\paren{0,1}$ and $\paren{1,\frac{1}{2}}$ are green, no red-blue segments are on the left, right, or top sides. Since $\paren{0,0}$ is red and $\paren{1,0}$ is blue, all points on the bottom side are red or blue. Traveling along the bottom side from left to right, we switch between red and blue for every red-blue segment on this side. But we must switch an odd number of times since we start at the red $\paren{0,0}$ and end at the blue $\paren{1,0}$, so there are an odd number of red-blue segments on the boundary.
+
+Now, count the number of pairs $\paren{T,\ell}$ with $\ell$ a red-blue segment in triangle $T$ of the dissection. On one hand, this number is odd since $\ell$ on the boundary is counted once and $\ell$ in the interior of the square is counted twice. On the other hand, a non-rainbow triangle contains either $0$ or $2$ red-blue segments while a rainbow triangle contains exactly $1$ red-blue segment, so this count mod $2$ is the number of rainbow triangles. Thus, there are an odd number of rainbow triangles.
+\end{lemmaproof}
+
+Now, suppose that $n$ is odd. We know that that there exists a rainbow triangle in the dissection. Then the area of this triangle is $\frac{1}{n}$, so the determinant $D$ above has value $\pm\frac{2}{n}$ by Shoelace Formula. But then \[\abs{D}_2=\abs{\pm\frac{2}{n}}_2=\abs{2}_2\abs{\frac{1}{n}}_2=\frac{1}{2}<\abs{D}_2,\] contradiction. Thus, a square cannot be dissected into an odd number of triangles of equal area.

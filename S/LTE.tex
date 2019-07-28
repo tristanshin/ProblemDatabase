@@ -1,0 +1,14 @@
+Suppose that $a,b$ are integers such that $p\mid a-b$ but $p\nmid a,b$.
+
+First, let $k$ be an integer not divisible by $p$. Then \[\frac{a^k-b^k}{a-b}=a^{k-1}+a^{k-2}b+\ldots+ab^{k-2}+b^{k-1}\equiv ka^{k-1}\not\equiv0\pmod p,\] so $\nu_p\left(a^k-b^k\right)=\nu_p\left(a-b\right)$.
+
+Now, let $a-b=pc$ for some integer $c$, then
+\begin{align*}
+	\frac{a^p-b^p}{a-b}&=\displaystyle\sum_{i=0}^{p-1}a^{p-1-i}b^i=\displaystyle\sum_{i=0}^{p-1}b^i\left(b+pc\right)^{p-1-i}\\
+	&\equiv\displaystyle\sum_{i=0}^{p-1}b^i\left(b^{p-1-i}+p\left(p-1-i\right)b^{p-2-i}c\right)\pmod{p^2}\\
+	&\equiv\displaystyle\sum_{i=0}^{p-1}\left(b^{p-1}+p\left(p-1-i\right)b^{p-2}c\right)\pmod{p^2}\\
+	&\equiv p\left(b^{p-1}+\frac{p\left(p-1\right)}{2}b^{p-2}c\right)\pmod{p^2}.
+\end{align*}
+Since $b^{p-1}$ is not divisible by $p$, this is $p$ times an integer not divisible by $p$, so $\nu_p\left(a^p-b^p\right)=\nu_p\left(a-b\right)+1$. It follows by induction that $\nu_p\left(a^{p^j}-b^{p^j}\right)=\nu_p\left(a-b\right)+j$ for any positive integer $j$.
+
+Now, let $n=p^{\nu_p\left(n\right)}m$. Then \[\nu_p\left(x^n-y^n\right)=\nu_p\left(x^{p^{\nu_p\left(n\right)}}-y^{p^{\nu_p\left(n\right)}}\right)=\nu_p\left(x-y\right)+\nu_p\left(n\right)\] by using $\left(a,b,k\right)=\left(x^{p^{\nu_p\left(n\right)}},y^{p^{\nu_p\left(n\right)}},m\right)$ above then $\left(a,b,j\right)=\left(x,y,\nu_p\left(n\right)\right)$ in the second equation above.
