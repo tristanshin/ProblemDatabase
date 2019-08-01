@@ -154,5 +154,4 @@ def USAMO(year):
         lfile.write(str(year) + " USAMO \#" + str(i))
         lfile.close()
 
-for y in range(1959,2020):
-    IMO(y)
+

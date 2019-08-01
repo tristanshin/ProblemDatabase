@@ -87,7 +87,7 @@ def OMO(contest):
                 pfile.write(line)
         orig.close()
         pfile.close()
-        os.chdir(os.path.expanduser("~/Google Drive/Math Stuff/ProblemDatabase/P"))
+        os.chdir(os.path.expanduser("~/Dropbox/LaTeX/ProblemDatabase/P"))
 
 def RMM(year):
     if year == 2014:
@@ -149,5 +149,3 @@ def USAMO(year):
         filename = "USAMO-" + str(year) + "-" + str(i) + ".tex"
         os.system("touch " + filename)
         os.system("open " + filename)
-
-IMO(2019)
