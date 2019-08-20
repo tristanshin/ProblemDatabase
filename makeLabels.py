@@ -84,6 +84,13 @@ def OMO(contest):
         lfile.write("OMO " + season + " 20" + contest[-2:] + " " + "\#" + str(i))
         lfile.close()
 
+def Putnam(year,version):
+    for i in range(1,7):
+        filename = "Putnam-" + str(year) + "-" + version + str(i) + ".tex"
+        lfile = open(filename,"w+")
+        lfile.write(str(year) + " Putnam " + version + str(i))
+        lfile.close()
+
 def RMM(year):
     if year == 2014:
         return
@@ -153,5 +160,3 @@ def USAMO(year):
         lfile = open(filename,"w+")
         lfile.write(str(year) + " USAMO \#" + str(i))
         lfile.close()
-
-

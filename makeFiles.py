@@ -89,6 +89,12 @@ def OMO(contest):
         pfile.close()
         os.chdir(os.path.expanduser("~/Dropbox/LaTeX/ProblemDatabase/P"))
 
+def Putnam(year,version):
+    for i in range(1,7):
+        filename = "Putnam-" + str(year) + "-" + version + str(i) + ".tex"
+        os.system("touch " + filename)
+        os.system("open " + filename)
+
 def RMM(year):
     if year == 2014:
         return
