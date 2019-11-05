@@ -1,0 +1,9 @@
+Define the polynomial $P(x)=x^{25}+2x^{24}+\ldots+25x+26$; observe that $n=P(27)$. Also define $Q(x)=26x^{25}+25x^{24}+\ldots+2x+1$. Then
+\[
+	Q(x)=\frac{d}{dx}(x^{26}+x^{25}+\ldots+x^2+x+1)=\frac{d}{dx}\frac{x^{27}-1}{x-1}=\frac{26x^{27}-27x^{26}+1}{(x-1)^2}.
+\]
+Now check that
+\[
+	P(x)=x^{25}Q\left(\frac{1}{x}\right)=\frac{x^{27}-27x+26}{(x-1)^2}
+\]
+so it suffices to compute $\frac{27^{27}-27^2+26}{26^2}$ modulo $4$ and $25$ (by Chinese Remainder Theorem). Since $27^{27}-27^2+26\equiv4\pmod{16}$, we get that this quantity is $1\pmod4$. And we can easily see that $\frac{2^7-2^2+1}{1^2}\equiv0\pmod{25}$ so the expression is $\boxed{25}\pmod{100}$ as desired.

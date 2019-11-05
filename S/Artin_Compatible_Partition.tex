@@ -1,0 +1,53 @@
+The partitions come in the following forms:
+\begin{itemize}
+	\item Each integer is its own set in the partition (i.e. we can label the partitions as $\Pi_k=\{k\}$ for each $k\in\mathbb{Z}$).
+	\item For some positive integer $n$, we partition $\mathbb{Z}$ based on their value mod $n$ (i.e. define $\Pi_k=\{m\in\mathbb{Z}\mid m\equiv k\pmod n\}$ for $k=0,\ldots,n-1$).
+\end{itemize}
+It is clear that each of these work for modular arithmetic reasons.
+
+For notational purposes, for a set $S$ and positive integer $j$ let $S^{(+)j}$ denote $\underbrace{S+S+\ldots+S}_{j\text{ times}}$. Also let $\Pi_0$ be the set that $0$ is in.
+
+\begin{claim}
+	For any (not necessarily distinct) $\Pi_1,\ldots,\Pi_k$ in the partition, there exists a $\Pi'$ in the partition such that
+	\[
+		\Pi_1+\Pi_2+\ldots+\Pi_k\subseteq\Pi'.
+	\]
+\end{claim}
+\begin{lemmaproof}
+	We prove this by induction on $k$. For $k=1$ this is obvious, for $k=2$ this is given. Now assume we know this is true for some integer $k\geq2$. Then let $\Pi_1+\ldots+\Pi_k\subseteq\Pi^*$ for some $\Pi^*$ in the partition, then
+	\[
+		\Pi_1+\ldots+\Pi_k+\Pi_{k+1}\subseteq\Pi^*+\Pi_{k+1}\subseteq\Pi'
+	\]
+	for some $\Pi'$ in the partition as desired. So the inductive step is proven and hence the claim is true.
+\end{lemmaproof}
+
+\begin{claim}
+	For any set $\Pi$ in the partition, $\Pi_0+\Pi=\Pi$.
+\end{claim}
+\begin{lemmaproof}
+	We have $\Pi_0+\Pi\subseteq\Pi'$ for some $\Pi'$ in the partition. But if we take $x\in\Pi$, then $x=0+x\in\Pi_0+\Pi\subseteq\Pi'$, so $x\in\Pi'$ and thus $\Pi'=\Pi$. So $\Pi_0+\Pi\subseteq\Pi$. But clearly $\Pi\subseteq\Pi_0+\Pi$ so $\Pi_0+\Pi=\Pi$.
+\end{lemmaproof}
+
+Casework on $\Pi_0$.
+\begin{itemize}
+	\item First suppose $\Pi_0=\{0\}$. Suppose distinct $x,y$ are in $\Pi$ for some $\Pi$ in the partition. Let $-x\in\Pi_1$ (possibly equal to $\Pi$). Then $\{0,y-x\}\subseteq\Pi+\Pi_1\subseteq\Pi'$ for some $\Pi'$ in the partition. But then we require $\Pi'=\Pi_0$ since $0\in\Pi'$, so $y-x\in\Pi_0$, contradiction since $y-x\neq0$. Thus every element of $\mathbb{Z}$ is in its own set.
+	\item Now suppose $\Pi_0$ has some element besides $0$. By the Well-Ordering Principle, we can choose non-zero $n\in\Pi_0$ with minimal absolute value. We can induct to show that $\Pi_0^{(+)k}=\Pi_0$ for any $k\in\mathbb{N}$, so $kn\in\Pi_0$ for all $k\in\mathbb{N}$. Next, let $-n\in\Pi$. Then $\Pi_0+\Pi=\Pi$, but $0=n+(-n)\in\Pi_0+\Pi=\Pi$ so $\Pi=\Pi_0$ and thus $-n\in\Pi_0$. By the same argument as before, $-kn\in\Pi_0$ for all $k\in\mathbb{N}$. So $n\mathbb{Z}\subseteq\Pi_0$. At this point, since $n\mathbb{Z}$ and $(-n)\mathbb{Z}$ are the same, we can assume $n$ is positive. Suppose $m\in\Pi_0$ with $n\nmid m$. Write $m=dn+r$ where $d$ is an integer and $r\in\{0,\ldots,n-1\}$ by the division algorithm. Then
+	\[
+		r=m-dn\in\Pi_0^{(+)d+1}=\Pi_0
+	\]
+	but $|r|<|n|$, contradiction. Thus all elements of $\Pi_0$ are divisible by $n$ so $\Pi_0=n\mathbb{Z}$.
+	
+	Assume $a\equiv b\pmod n$ and $a\in\Pi_1,b\in\Pi_2$ for some $\Pi_1,\Pi_2$ in the partition. Write $b=a+kn$ for some $k\in\mathbb{Z}$. Then
+	\[
+		b=a+kn\in\Pi_1+\Pi_0^{(+)k}\subseteq\Pi'
+	\]
+	for some $\Pi'$ in the partition. So we need $\Pi'=\Pi_2$. But then
+	\[
+		a\in\Pi_1+\Pi_0^{(+)k}\subseteq\Pi_2
+	\]
+	so we need $\Pi_1=\Pi_2$. Thus each congruence class mod $n$ is contained in the same set of the partition.
+	
+	Now assume $a,b\in\Pi$ for some $\Pi$ in the partition. Then $na\in\Pi^{(+)n}\subseteq\Pi'$ for some $\Pi'$ in the partition. But $na\in\Pi'$ and $na\in\Pi_0$, so $\Pi'=\Pi_0$. But note that $(n-1)a+b\in\Pi^{(+)n}\subseteq\Pi_0$, so $(n-1)a+b\equiv0\pmod n$ and thus $a\equiv b\pmod n$.
+	
+	It follows that the set $\{m\in\mathbb{Z}\mid m\equiv k\pmod n\}$ is a set in the partition for each integer $k$.
+\end{itemize}

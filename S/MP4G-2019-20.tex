@@ -1,0 +1,13 @@
+Write $1-4\sin^2\theta=2\cos2\theta-1$. So it suffices to compute
+\[
+	\prod_{k=1}^{\infty}\left(2\cos\frac{\pi}{3\cdot2^k}-1\right).
+\]
+Let $N$ be a positive integer and consider
+\[
+	P_N=\prod_{k=1}^N\left(2\cos\frac{\pi}{3\cdot2^k}-1\right).
+\]
+Observe that
+\[
+	\left(2\cos\frac{\pi}{3\cdot2^N}+1\right)P_N=\left(2\cos\frac{\pi}{3\cdot2^N}+1\right)\left(2\cos\frac{\pi}{3\cdot2^N}-1\right)P_{N-1}=\left(2\cos\frac{\pi}{3\cdot2^{N-1}}+1\right)P_{N-1}
+\]
+using the identity $\left(2\cos x+1\right)\left(2\cos x-1\right)=2\cos2x+1$. Thus by induction, $P_N=\frac{2}{2\cos\frac{\pi}{3\cdot2^N}+1}$ so $\displaystyle\lim_{N\to\infty}P_N=\boxed{\frac{2}{3}}$ as desired.

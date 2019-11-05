@@ -62,7 +62,7 @@ def write(problem):
         # title = input("TITLE :: ")
         os.chdir("W")
         writeup = open(problem + ".tex","w+")
-        writeup.write("\\documentclass[a4paper, 12pt]{article}\n")
+        writeup.write("\\documentclass[letter, 12pt]{article}\n")
         writeup.write("\\usepackage{tssal}\n")
         writeup.write("\n")
         writeup.write("\\title{" + title + "}\n")

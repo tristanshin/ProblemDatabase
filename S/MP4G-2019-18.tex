@@ -1,0 +1,20 @@
+Suppose that the three lines are concurrent. Then there is a solution to
+\[
+	\begin{bmatrix}
+		a & b & c \\
+		c & a & b \\
+		b & c & a
+	\end{bmatrix}
+	\begin{bmatrix} x \\ y \\ -1 \end{bmatrix}
+	=
+	\begin{bmatrix} 0 \\ 0 \\ 0 \end{bmatrix}
+\]
+This requires the determinant of the coefficient matrix to be $0$. The circulant matrix has determinant
+\[
+	(a+b+c)(a+\omega b+\omega^2c)(a+\omega^2b+\omega c)=\frac{1}{2}(a+b+c)((b-c)^2+(c-a)^2+(a-b)^2).
+\]
+For it to be $0$, we require $a+b+c=0$ or $a=b=c$. So the lines being distinct and concurrent implies $a+b+c=0$ and $(a,b,c)\neq(0,0,0)$.
+
+Now, if $a+b+c=0$ and $(a,b,c)\neq(0,0,0)$ then the coefficient matrix has determinant $0$ so a solution exists and thus the lines are concurrent. We can also check that not all of $\frac{b}{c},\frac{c}{a},\frac{a}{b}$ are the same. Indeed, if they were, then we would require them to be the cube root of their product, which is $1$. Then $a=b=c=0$, contradiction.
+
+So it suffices to count the number of $(a,b,c)$ with $a+b+c=0$ but $(a,b,c)\neq(0,0,0)$. This counts to $\boxed{720}$ as desired.

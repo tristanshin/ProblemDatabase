@@ -1,0 +1,14 @@
+Call a set $S$ of positive integers \vocab{separate} if no consecutive integers are in $S$. Let $S_m=\{1,2,\ldots,m\}$ and $T_m=\{n-m,n-m+1,\ldots,n-1\}$ for $m=0,1,\ldots,n-1$ (so $S_0=T_0=\emptyset$).
+\begin{claim}
+	$u_k=\displaystyle\sum_{\substack{S\subseteq S_{k-1} \\ S\text{ separate}}}\displaystyle\prod_{i\in S}a_i$ for $k=1,2,\ldots,n$, where the empty product is $1$.
+\end{claim}
+\begin{lemmaproof}
+	Note the identity
+	\[
+		\sum_{\substack{S\subseteq S_k \\ S\text{ separate}}}\prod_{i\in S}a_i=\sum_{\substack{S\subseteq S_{k-1} \\ S\text{ separate}}}\prod_{i\in S}a_i+a_k\sum_{\substack{S\subseteq S_{k-2} \\ S\text{ separate}}}\prod_{i\in S}a_i
+	\]
+	by casework on if $a_k\in S$ or not.
+	
+	Now, the only separate subset of $S_0$ is $\emptyset$ and the separate subsets of $S_1$ are $\emptyset,\{1\}$, matching with $u_1=1,u_2=1+a_1$. Then by induction, this identity proves the claim.
+\end{lemmaproof}
+By symmetry, $v_k=\displaystyle\sum_{\substack{S\subseteq T_{k-1} \\ S\text{ separate}}}\displaystyle\prod_{i\in S}a_i$. But observe that $S_{n-1}=T_{n-1}=\{1,2,\ldots,n-1\}$, so $u_n=v_n$.
