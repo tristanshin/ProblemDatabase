@@ -1,0 +1,21 @@
+Pick $\delta=\frac{1-\cos\frac{2\pi}{p}}{2}\eps$. Define $g(\vecb{x})=\omega^{f(\vecb{x})}$, where $\omega=e^{i\frac{2\pi}{p}}$. Then $f(\vecb{x})+f(\vecb{y})=f(\vecb{x}+\vecb{y})$ is equivalent to $g(\vecb{x})g(\vecb{y})\overline{g(\vecb{x+y})}=1$. Also define $\vecb{a}\in\FF_p^n$ to be the vector that maximizes $\Re\widehat{g}(\vecb{a})$. So
+\begin{align*}
+	1-2\delta &\leq \PP_{\vecb{x},\vecb{y}}(g(\vecb{x})g(\vecb{y})\overline{g(\vecb{x+y})}=1)\cdot1+\PP_{\vecb{x},\vecb{y}}(g(\vecb{x})g(\vecb{y})\overline{g(\vecb{x+y})}\neq1)\cdot(-1) \\
+	&\leq \EE_{\vecb{x},\vecb{y}}\Re g(\vecb{x})g(\vecb{y})\overline{g(\vecb{x+y})} \\
+	&= \Re\EE_{\vecb{x},\vecb{y}}\sum_{\vecb{r}_1}\widehat{g}(\vecb{r}_1)\omega^{\vecb{r}_1\cdot\vecb{x}}\sum_{\vecb{r}_2}\widehat{g}(\vecb{r}_2)\omega^{\vecb{r}_2\cdot\vecb{y}}\sum_{\vecb{r}_3}\widehat{\overline{g}}(\vecb{r}_3)\omega^{\vecb{r}_3\cdot(\vecb{x}+\vecb{y})} \\
+	&= \Re\sum_{\vecb{r}_1,\vecb{r}_2,\vecb{r}_3}\widehat{g}(\vecb{r}_1)\widehat{g}(\vecb{r}_2)\widehat{\overline{g}}(\vecb{r}_3)\EE_{\vecb{x}}\omega^{(\vecb{r}_1+\vecb{r}_3)\cdot\vecb{x}}\EE_{\vecb{y}}\omega^{(\vecb{r}_2+\vecb{r}_3)\cdot\vecb{y}} \\
+	&= \Re\sum_{\vecb{r}}\widehat{g}(\vecb{r})^2\widehat{\overline{g}}(-\vecb{r}) \\
+	&= \Re\sum_{\vecb{r}}\widehat{g}(\vecb{r})^2\overline{\widehat{g}(\vecb{r})} \\
+	&\leq \Re\widehat{g}(\vecb{a})\sum_{\vecb{r}}|\widehat{g}(\vecb{r})|^2 \\
+	&= \Re\widehat{g}(\vecb{a})\EE_{\vecb{x}}|g(\vecb{x})|^2 \\
+	&= \Re\widehat{g}(\vecb{a}) \\
+	&= \EE_{\vecb{x}}\Re g(\vecb{x})\omega^{-\vecb{a}\cdot\vecb{x}} \\
+	&\leq \PP_{\vecb{x}}(g(\vecb{x})\omega^{-\vecb{a}\cdot\vecb{x}}=1)
+	\cdot1+\PP_{\vecb{x}}(g(\vecb{x})\omega^{-\vecb{a}\cdot\vecb{x}}\neq1)
+	\cdot\cos\frac{2\pi}{p} \\
+	&= \cos\frac{2\pi}{p}+(1-\cos\frac{2\pi}{p})\PP_{\vecb{x}}(g(\vecb{x})\omega^{-\vecb{a}\cdot\vecb{x}}=1)
+\end{align*}
+so
+\[
+	\PP_{\vecb{x}}(f(\vecb{x})=\vecb{a}\cdot\vecb{x})\geq1-\frac{2\delta}{1-\cos\frac{2\pi}{p}}=1-\eps.\qedhere
+\]

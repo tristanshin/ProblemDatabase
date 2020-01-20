@@ -1,0 +1,7 @@
+The answer is $\boxed{5n+1}$. When $n=0$ this is clearly true.
+
+An easy descent argument implies that the solutions to $x^2+y^2=2^n$ are $(\pm2^{\frac{n}{2}},0)$ and $(0,\pm2^{\frac{n}{2}})$ if $n$ is even, or $(\pm2^{\frac{n-1}{2}},\pm2^{\frac{n-1}{2}})$ is $n$ is odd.
+
+Now, we count the number of squares in $P_n$ that use an element from $P_n\setminus P_{n-1}$. Check that the convex hull of $P_n$ is the square formed by the vertices in $P_n\setminus P_{n-1}$. So such a square must two edges along the sides of the large square. This only produces two types of squares: the big square formed by $P_n\setminus P_{n-1}$; and the four smaller squares which use one vertex in $P_n\setminus P_{n-1}$, two vertices in $P_{n-1}\setminus P_{n-2}$, and the vertex $(0,0)$. So there are $5$ such squares.
+
+This immediately implies by induction that the total count is $5n+1$ as desired.

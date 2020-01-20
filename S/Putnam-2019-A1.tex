@@ -1,0 +1,10 @@
+The answers are any integer $n$ with $\boxed{\nu_3(n)\neq1}$. Let $D(A,B,C)=A^3+B^3+C^3-3ABC$. These constructions suffice:
+\begin{align*}
+	D(0,0,0) &= 0 \\
+	D(k+2,k+1,k) &= 9k+9 \\
+	D(k+1,k,k) &= 3k+1 \\
+	D(k+1,k+1,k) &= 3k+2
+\end{align*}
+Clearly $D(A,B,C)$ is a nonnegative integer (AM-GM, $\ZZ$ is a ring). So it suffices to show that $D\equiv3,6\pmod9$ is impossible.
+
+Assume that $3\mid D$. If $3\mid ABC$ then $D\equiv A^3+B^3\pmod9$, so $D\equiv0\pmod9$. So $3\nmid ABC$. Then $A^3+B^3+C^3$ is divisible by $3$, so $(A,B,C)\equiv\pm(1,1,1)\pmod3$. But then $D\equiv0\pmod9$.

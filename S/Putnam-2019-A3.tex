@@ -1,0 +1,9 @@
+The answer is $\boxed{2019^{-\frac{1}{2019}}}$ achieved by $b_k=2019^{\frac{k}{2019}}$. This polynomial is
+\[
+	\sum_{k=0}^{2019}2019^{\frac{k}{2019}}x^k=\frac{2019^{\frac{2020}{2019}}x^{2020}-1}{2019^{\frac{1}{2019}}x-1}
+\]
+all of whose roots have magnitude $2019^{-\frac{1}{2019}}$. Now, by AM-GM we have
+\[
+	\mu\geq\left(\prod_{k=1}^{2019}|z_k|\right)^{\frac{1}{2019}}=\left|\prod_{k=1}^{2019}z_k\right|^{\frac{1}{2019}}=\left|-\frac{b_0}{b_{2019}}\right|^{\frac{1}{2019}}\geq\left(\frac{1}{2019}\right)^{\frac{1}{2019}}
+\]
+as desired.

@@ -1,0 +1,17 @@
+\textbf{First Solution (Recurrence)} Let $a_{k,c}=|\{\mathbf{x}\in\mathbb{F}_5^k:\mathbf{x}\cdot\mathbf{x}=c\}|$. I claim that
+\[
+	a_{k,c}=a_{k-1,c}+2a_{k-1,c-1}+2a_{k-1,c+2}.
+\]
+This follows by caseworking on the last component of $\mathbf{x}$. Thus
+\[
+	a_{k,c}=9a_{k-2,c}+4a_{k-2,c-1}+4a_{k-2,c-2}+4a_{k-2,c+1}+4a_{k-2,c+2}=5a_{k-2,c}+4\cdot5^{k-2}
+\]
+because all $5^{k-2}$ vectors in $\mathbb{F}_5^{k-2}$ are counted in some $a_{k-2,c}$. Since $a_{0,0}=1$, we can induct to show that $a_{2n,0}=\boxed{5^{2n-1}+5^n-5^{n-1}}$.
+
+\textbf{Second Solution (Fourier analysis/Roots of unity):} Define the polynomial $P(x)=\displaystyle\sum_{a=0}^4x^{a^2}$. Then the $x^m$ coefficient of $P(x)^{2n}$ is the number of solutions to $x_1^2+\cdots+x_{2n}^2=m$ with each $x_i\in\{0,1,2,3,4\}$. To count the total number such that $x_1^2+\cdots+x_{2n}^2$ is divisible by $5$, we apply the inverse discrete Fourier transform (more familiar as the roots of unity method). Let $\omega=e^{i\cdot\frac{2\pi}{5}}$, then the desired count is
+\begin{align*}
+	\frac{1}{5}\sum_{k=0}^4P(\omega^k)^{2n} &= \frac{1}{5}\left(5^{2n}+2(1+2\omega+2\omega^4)^{2n}+2(1+2\omega^2+2\omega^3)^{2n}\right) \\
+	&= 5^{2n-1}+\frac{2}{5}(1+4\cos\frac{2\pi}{5})^{2n}+\frac{2}{5}(1+4\cos\frac{4\pi}{5})^{2n} \\
+	&= 5^{2n-1}+\frac{2}{5}\cdot5^n+\frac{2}{5}\cdot5^n \\
+	&= \boxed{5^{2n-1}+4\cdot5^{n-1}}.
+\end{align*}

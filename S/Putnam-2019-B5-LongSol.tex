@@ -1,0 +1,24 @@
+Let $N=1009$. Define $q(x)=p(2x+1)$ so $p(k)=F_{2k+1}$ for $k=0,\ldots,N-1$ and we wish to find $q(N)$. Since $\deg q=N-1$, we have that $\Delta^Nq\equiv0$ so
+\[
+	q(N)=q(N)-\Delta^Nq(0)=\sum_{k=0}^{N-1}(-1)^k\binom{N}{k}q(k)=\sum_{k=0}^{N-1}(-1)^k\binom{N}{k}F_{2k+1}.
+\]
+Let $S_n$ be the sum on the right with $N$ replaced by $n$, and $S_{n,a}$ be the sum with $F_{2k+1}$ replaced by $F_{2k+a}$. Then
+\begin{align*}
+	S_{n,a} &= \sum_{k=0}^{n-1}(-1)^k\binom{n}{k}F_{2k+a} \\
+	&= \sum_{k=0}^{n-1}(-1)^k\left[\binom{n-1}{k-1}+\binom{n-1}{k}\right]F_{2k+a} \\
+	&= -\sum_{k=1}^{n-1}(-1)^{k-1}\binom{n-1}{k-1}F_{2k+a}+\sum_{k=0}^{n-1}(-1)^k\binom{n-1}{k}F_{2k+a} \\
+	&= -\sum_{k=0}^{n-2}(-1)^k\binom{n-1}{k}F_{2k+2+a}+\sum_{k=0}^{n-1}(-1)^k\binom{n-1}{k}F_{2k+a} \\
+	&= (-1)^{n-1}F_{2n-2+a}-\sum_{k=0}^{n-2}(-1)^k\binom{n-1}{k}[F_{2k+2+a}-F_{2k+a}] \\
+	&= (-1)^{n-1}F_{2n-2+a}-\sum_{k=0}^{n-2}(-1)^k\binom{n-1}{k}F_{2k+1+a}.
+\end{align*}
+In particular, for $n\geq2$
+\begin{align*}
+	S_n &= S_{n,1} \\
+	&= (-1)^{n-1}F_{2n-1}-\sum_{k=0}^{n-2}(-1)^k\binom{n-1}{k}F_{2k+2} \\
+	&= (-1)^{n-1}F_{2n-1}-\sum_{k=0}^{n-2}(-1)^k\binom{n-1}{k}[F_{2k+1}+F_{2k}] \\
+	&= (-1)^{n-1}F_{2n-1}-\sum_{k=0}^{n-2}(-1)^k\binom{n-1}{k}F_{2k+1}-\sum_{k=0}^{n-2}(-1)^k\binom{n-1}{k}F_{2k} \\
+	&= (-1)^{n-1}F_{2n-1}-S_{n-1}-S_{n-1,0} \\
+	&= (-1)^{n-1}F_{2n-1}-S_{n-1}-(-1)^{n-2}F_{2n-4}+\sum_{k=0}^{n-3}(-1)^k\binom{n-2}{k}F_{2k+1} \\
+	&= -S_{n-1}+S_{n-2}+(-1)^{n-1}[F_{2n-1}+F_{2n-4}].
+\end{align*}
+With $S_0=0$ and $S_1=1$, an easy induction (using the Fibonacci definition) gives $S_n=(-1)^{n-1}(F_{2n+1}-F_{n+1})$. In particular, $p(2019)=q(N)=S_N=F_{2019}-F_{1010}$ so $(j,k)=\boxed{(2019,1010)}$.

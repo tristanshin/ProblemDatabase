@@ -1,0 +1,15 @@
+Let $n=1009$. Define $q(x)=p(2x+1)$ (degree $n-1$) so $q(k)=F_{2k+1}$ for $k=0,\ldots,n-1$ and we wish to find $q(n)$.
+
+\textbf{Claim 1:} $\Delta^{m-k}q(k)=F_{m+k+1}$ for $0\leq k\leq m\leq n-1$.
+
+\textit{Proof:} Induct on $m$. The base case of $m=0$ is trivially true. Now assume $1\leq m\leq n-1$. Induct downwards on $k$. The base case of $k=m$ is true by the given. Now assume $0\leq k\leq m-1$. Then
+\[
+\Delta^{m-k}q(k)=\Delta^{m-k-1}q(k+1)-\Delta^{m-k-1}q(k)=F_{m+k+2}-F_{m+k}=F_{m+k+1}.
+\]
+\textbf{Claim 2:} $\Delta^{n-k}q(k)=F_{n+k+1}-F_{n+1}$ for $0\leq k\leq n$.
+
+\textit{Proof:} Induct on $k$. The base case of $k=0$ is true because $\Delta^nq\equiv0$. Now assume $1\leq k\leq n$. Then
+\[
+\Delta^{n-k}q(k)=\Delta^{n-k+1}q(k-1)+\Delta^{n-k}q(k-1)=(F_{n+k}-F_{n+1})+F_{n+k-1}=F_{n+k+1}-F_{n+1}.
+\]
+In particular, $q(n)=F_{2n+1}-F_{n+1}$ as desired.

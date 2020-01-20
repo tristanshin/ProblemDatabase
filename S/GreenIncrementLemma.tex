@@ -1,0 +1,13 @@
+Suppose that such an integer $k$ does not exist. I claim that $a_i>a_0+\frac{2^i-1}{2^{n+1}-1}$ for $i=1,\ldots,n+1$. We prove this by induction on $i$. For the base case of $i=1$, we have
+\[
+	a_1>2a_0-a_0+\frac{1}{2^{n+1}-1}=a_0+\frac{2^1-1}{2^{n+1}-1}
+\]
+as desired. Now, assume the claim for a fixed $i\in\{1,\ldots,n\}$, then
+\[
+	a_{i+1}>2a_i-a_0+\frac{1}{2^{n+1}-1}>2\left(a_0+\frac{2^i-1}{2^{n+1}-1}\right)-a_0+\frac{1}{2^{n+1}-1}=a_0+\frac{2^{i+1}-1}{2^{n+1}-1}
+\]
+so the inductive step is proven and hence the claim is true. Then
+\[
+	a_{n+1}>a_0+1\geq1,
+\]
+contradiction.
