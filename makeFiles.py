@@ -1,6 +1,12 @@
 import os
 os.chdir("P")
 
+def AMC(year,test):
+	for i in range(1,26):
+		filename = "AMC" + test + "-" + str(year) + "-" + str(i) + ".tex"
+		os.system("touch " + filename)
+		os.system("open " + filename)
+
 def AIME(year,test):
     for i in range(1,16):
         if test == 1:
@@ -155,3 +161,4 @@ def USAMO(year):
         filename = "USAMO-" + str(year) + "-" + str(i) + ".tex"
         os.system("touch " + filename)
         os.system("open " + filename)
+

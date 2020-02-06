@@ -1,0 +1,22 @@
+The operation is equivalent to choosing a divisor $d$ of the number on the board and multiplying the number on the board by $\frac{(d-1)!}{d}$. We use the notation $x\leadsto y$ to denote that if $x$ is written on the board, then Eric can write $y$ on the board in finite amount of time.
+%\begin{greenboxtitle}{Claim}
+%	If $x\leadsto y$, then $cx\leadsto cy$.
+%\end{greenboxtitle}
+%\begin{lemmaproof}
+%	If
+%	\[
+%		x=n_1\stackrel{d_1}{\longrightarrow}n_2\stackrel{d_2}{\longrightarrow}\cdots\stackrel{d_i}{\longrightarrow}n_{i+1}=y
+%	\]
+%	then
+%	\[
+%		cx=cn_1\stackrel{d_1}{\longrightarrow}cn_2\stackrel{d_2}{\longrightarrow}\cdots\stackrel{d_i}{\longrightarrow}cn_{i+1}=cy\qedhere
+%	\]
+%\end{lemmaproof}
+
+We prove that $n\leadsto1$ by induction on the largest prime factor of $n$. Specifically, we prove that $n\leadsto n'$ for some $n'$ with all prime factors less than the largest prime factor of $n$.
+
+Let $n=p^km$ where $p$ is the largest prime factor of $n$ and $m$ is not divisible by $p$. We have
+\[
+	n=p^km\stackrel{p}{\longrightarrow}(p-1)!p^{k-1}m\stackrel{p}{\longrightarrow}(p-1)!^2p^{k-2}m\stackrel{p}{\longrightarrow}\cdots\stackrel{p}{\longrightarrow}(p-1)!^km
+\]
+as desired. So by induction, all Eric can always write $1$ on the board in finite amount of time.

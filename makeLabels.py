@@ -1,6 +1,13 @@
 import os
 os.chdir("L")
 
+def AMC(year,test):
+    for i in range(1,26):
+        filename = "AMC" + test + "-" + str(year) + "-" + str(i) + ".tex"
+        lfile = open(filename,"w+")
+        lfile.write(str(year) + " AMC " + test + " \#" + str(i))
+        lfile.close()
+
 def AIME(year,test):
     for i in range(1,16):
         if test == 1:
