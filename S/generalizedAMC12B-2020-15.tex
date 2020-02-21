@@ -1,0 +1,206 @@
+The answer is $\boxed{F_n+2F_{n-1}+2r}$ where $r$ is $1$ for odd $n$ and $0$ for even $n$. Here, $\{F_k\}$ is the Fibonacci sequence satisfying $F_1=F_2=1$ and $F_{k+1}=F_k+F_{k-1}$.
+
+Label the people $P_1,\ldots,P_{2n}$ with indices taken mod $2n$. Casework on who $P_0$ is paired with.
+\begin{itemize}
+	\item \underline{\textbf{Case 1: $P_0$ paired with $P_1$}}
+	
+	If $P_n$ is paired with $P_{n+1}$, then we are left with two symmetrically opposite sections of $n-2$ people.
+	\begin{center}
+		\begin{asy}
+			int n = 11;
+			int[][] edges = {
+				{0, 1},
+				{n, n + 1},
+			};
+			int[][] groups = {
+				{2, n - 1},
+				{2 + n, n - 1 + n},
+			};
+			int[] labelIndex = {
+				0,
+				1,
+				n,
+				n + 1,
+			};
+			string[] labelName = {
+				"0",
+				"1",
+				"n",
+				"n+1",
+			};
+			real s = 1.2;
+			
+			size(5cm);
+			pair[] P;
+			for (int i = 0; i < 2 * n; ++i) P.push(dir(90 + 180 * i / n));
+			
+			pen edgeColor = blue;
+			for (int[] edge : edges) draw(P[edge[0]]--P[edge[1]], edgeColor);
+			
+			pen groupColor = purple;
+			real r = Sin(90 / n);
+			pair O = (0,0);
+			for (int[] group : groups) {
+				draw(arc(P[group[0]], r, -90 + 180 * group[0] / n, 90 + 180 * group[0] / n, CCW), groupColor);
+				draw(arc(P[group[1]], r, -90 + 180 * group[1] / n, 90 + 180 * group[1] / n, CW), groupColor);
+				draw(arc(O, 1 + r, 90 + 180 * group[0] / n, 90 + 180 * group[1] / n), groupColor);
+				draw(arc(O, 1 - r, 90 + 180 * group[0] / n, 90 + 180 * group[1] / n), groupColor);
+			}
+			
+			defaultpen(fontsize(10pt));
+			for (int i = 0; i < labelIndex.length; ++i) label ("$P_{" + labelName[i] + "}$", s * P[labelIndex[i]]);
+			
+			for (int i = 0; i < 2 * n; ++i) dot(P[i]);
+		\end{asy}
+	\end{center}
+	The key claim is that the figure is symmetric under $180^\circ$ rotation. It suffices to check that neighbor pairings are symmetric. First pair up all opposite pairings. This leaves some gaps of even length.
+	\begin{center}
+		\begin{asy}
+			int n = 11;
+			int[][] edges = {
+				{0, 1},
+				{n, n + 1},
+				{2, 2 + n},
+				{3, 3 + n},
+				{n - 3, n - 3 + n},
+			};
+			int[][] groups = {
+				{4, n - 4},
+				{n - 2, n - 1},
+				{4 + n, n - 4 + n},
+				{n - 2 + n, n - 1 + n},
+			};
+			int[] labelIndex = {
+				0,
+				1,
+				n,
+				n + 1,
+			};
+			string[] labelName = {
+				"0",
+				"1",
+				"n",
+				"n+1",
+			};
+			real s = 1.2;
+			
+			size(5cm);
+			pair[] P;
+			for (int i = 0; i < 2 * n; ++i) P.push(dir(90 + 180 * i / n));
+			
+			pen edgeColor = blue;
+			for (int[] edge : edges) draw(P[edge[0]]--P[edge[1]], edgeColor);
+			
+			pen groupColor = green;
+			real r = Sin(90 / n);
+			pair O = (0,0);
+			for (int[] group : groups) {
+				draw(arc(P[group[0]], r, -90 + 180 * group[0] / n, 90 + 180 * group[0] / n, CCW), groupColor);
+				draw(arc(P[group[1]], r, -90 + 180 * group[1] / n, 90 + 180 * group[1] / n, CW), groupColor);
+				draw(arc(O, 1 + r, 90 + 180 * group[0] / n, 90 + 180 * group[1] / n), groupColor);
+				draw(arc(O, 1 - r, 90 + 180 * group[0] / n, 90 + 180 * group[1] / n), groupColor);
+			}
+			
+			defaultpen(fontsize(10pt));
+			for (int i = 0; i < labelIndex.length; ++i) label ("$P_{" + labelName[i] + "}$", s * P[labelIndex[i]]);
+			
+			for (int i = 0; i < 2 * n; ++i) dot(P[i]);
+		\end{asy}
+	\end{center}
+	These gaps have only one way to be filled in, so they are indeed symmetric. Thus it suffices to fill in one section of $n-2$ with blocks of $2$ or $1$, corresponding to neighbor pairings or opposite pairings. It is well-known that this can be done in $F_{n-1}$ ways.
+	
+	Otherwise, $P_n$ is paired with $P_{n-1}$. We inductively prove that $\{P_{-2k+1},P_{-2k}\}$ and $\{P_{n-2k},P_{n-2k-1}\}$ are pairings by induction on $k$. The base case of $k=0$ is assumed. Check that given the pairings for $k-1$, the pairings for $k$ are forced:
+	\begin{center}
+		\begin{asy}
+			int n = 11;
+			int k = 2;
+			int[][] edges = {
+				{2 * n - 2 * (k - 1) + 1, 2 * n - 2 * (k - 1)},
+				{n - 2 * (k - 1), n - 2 * (k - 1) - 1},
+			};
+			int[][] fakeEdges = {
+				{2 * n - 2 * k + 1, 2 * n - 2 * (k - 1)},
+				{2 * n - 2 * k + 1, n - 2 * k + 1},
+				{n - 2 * k, 2 * n - 2 * k},
+				{n - 2 * k, n - 2 * k + 1},
+			};
+			int[][] newEdges = {
+				{2 * n - 2 * k + 1, 2 * n - 2 * k},
+				{n - 2 * k, n - 2 * k - 1},
+			};
+			
+			size(5cm);
+			pair[] P;
+			for (int i = 0; i < 2 * n; ++i) P.push(dir(90 + 180 * i / n));
+			
+			pen edgeColor = blue;
+			for (int[] edge : edges) draw(P[edge[0]]--P[edge[1]], edgeColor);
+			
+			pen fakeEdgeColor = red;
+			for (int[] fakeEdge : fakeEdges) {
+				draw(P[fakeEdge[0]]--P[fakeEdge[1]], fakeEdgeColor+dashed);
+			}
+			
+			pen newEdgeColor = rgb(0,191,255);
+			for (int[] newEdge : newEdges) {
+				draw(P[newEdge[0]]--P[newEdge[1]], newEdgeColor);
+			}
+			
+			for (int i = 0; i < 2 * n; ++i) dot(P[i]);
+		\end{asy}
+	\end{center}
+	So only neighbors are paired. Then $0$ and $n-1$ must have the same parity, so $n$ is odd, with only one case.
+	
+	Combining these, there are $F_{n-1}+r$ possible pairings in this case.
+	\item \underline{\textbf{Case 2: $P_0$ paired with $P_{-1}$}}
+	
+	Symmetric with the previous case.
+	\item \underline{\textbf{Case 3: $P_0$ paired with $P_n$}}
+	
+	We are left with two symmetrically opposite sections of $n-1$ people.
+	\begin{center}
+		\begin{asy}
+			int n = 11;
+			int[][] edges = {
+				{0, n},
+			};
+			int[][] groups = {
+				{1, n - 1},
+				{1 + n, n - 1 + n},
+			};
+			int[] labelIndex = {
+				0,
+				n,
+			};
+			string[] labelName = {
+				"0",
+				"n",
+			};
+			real s = 1.2;
+			
+			size(5cm);
+			pair[] P;
+			for (int i = 0; i < 2 * n; ++i) P.push(dir(90 + 180 * i / n));
+			
+			pen edgeColor = blue;
+			for (int[] edge : edges) draw(P[edge[0]]--P[edge[1]], edgeColor);
+			
+			pen groupColor = purple;
+			real r = Sin(90 / n);
+			pair O = (0,0);
+			for (int[] group : groups) {
+				draw(arc(P[group[0]], r, -90 + 180 * group[0] / n, 90 + 180 * group[0] / n, CCW), groupColor);
+				draw(arc(P[group[1]], r, -90 + 180 * group[1] / n, 90 + 180 * group[1] / n, CW), groupColor);
+				draw(arc(O, 1 + r, 90 + 180 * group[0] / n, 90 + 180 * group[1] / n), groupColor);
+				draw(arc(O, 1 - r, 90 + 180 * group[0] / n, 90 + 180 * group[1] / n), groupColor);
+			}
+			
+			defaultpen(fontsize(10pt));
+			for (int i = 0; i < labelIndex.length; ++i) label ("$P_{" + labelName[i] + "}$", s * P[labelIndex[i]]);
+			
+			for (int i = 0; i < 2 * n; ++i) dot(P[i]);
+		\end{asy}
+	\end{center}
+	Similarly to the above, there are $F_n$ ways for this to be filled out.
+\end{itemize}
+Combining the three cases, we get the desired answer.

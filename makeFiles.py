@@ -161,4 +161,3 @@ def USAMO(year):
         filename = "USAMO-" + str(year) + "-" + str(i) + ".tex"
         os.system("touch " + filename)
         os.system("open " + filename)
-

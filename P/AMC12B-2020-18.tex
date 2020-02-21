@@ -1,0 +1,39 @@
+In square $ABCD$, points $E$ and $H$ lie on $\overline{AB}$ and $\overline{DA}$, respectively, so that $AE=AH.$ Points $F$ and $G$ lie on $\overline{BC}$ and $\overline{CD}$, respectively, and points $I$ and $J$ lie on $\overline{EH}$ so that $\overline{FI} \perp \overline{EH}$ and $\overline{GJ} \perp \overline{EH}$. See the figure below. Triangle $AEH$, quadrilateral $BFIE$, quadrilateral $DHJG$, and pentagon $FCGJI$ each has area $1.$ What is $FI^2$?
+\begin{center}
+\begin{asy}
+import olympiad;
+size(5cm);
+real x=2sqrt(2);
+real y=2sqrt(16-8sqrt(2))-4+2sqrt(2);
+real z=2sqrt(8-4sqrt(2));
+pair A, B, C, D, E, F, G, H, I, J;
+A = (0,0);
+B = (4,0);
+C = (4,4);
+D = (0,4);
+E = (x,0);
+F = (4,y);
+G = (y,4);
+H = (0,x);
+I = F + z * dir(225);
+J = G + z * dir(225);
+
+draw(A--B--C--D--A);
+draw(H--E);
+draw(J--G^^F--I);
+draw(rightanglemark(G, J, I));
+draw(rightanglemark(F, I, E));
+
+dot("$A$", A, S);
+dot("$B$", B, S);
+dot("$C$", C, N);
+dot("$D$", D, N);
+dot("$E$", E, S);
+dot("$F$", F, E);
+dot("$G$", G, N);
+dot("$H$", H, W);
+dot("$I$", I, S);
+dot("$J$", J, S);
+\end{asy}
+\end{center}
+$\textbf{(A) } \frac{7}{3} \qquad \textbf{(B) } 8-4\sqrt2 \qquad \textbf{(C) } 1+\sqrt2 \qquad \textbf{(D) } \frac{7}{4}\sqrt2 \qquad \textbf{(E) } 2\sqrt2$
