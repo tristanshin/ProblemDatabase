@@ -75,6 +75,14 @@ def ELMO(year):
         lfile.write(str(year) + " ELMO \#" + str(i))
         lfile.close()
 
+def HMIC(year):
+    num = 5
+    for i in range(1,num + 1):
+        filename = "HMIC-" + str(year) + "-" + str(i) + ".tex"
+        lfile = open(filename,"w+")
+        lfile.write(str(year) + " HMIC \#" + str(i))
+        lfile.close()
+
 def IMO(year):
     for i in range(1,7):
         filename = "IMO-" + str(year) + "-" + str(i) + ".tex"

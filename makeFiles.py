@@ -66,6 +66,13 @@ def ELMO(year):
         os.system("touch " + filename)
         os.system("open " + filename)
 
+def HMIC(year):
+	num = 5
+	for i in range(1, num + 1):
+		filename = 'HMIC-' + str(year) + '-' + str(i) + '.tex'
+		os.system('touch ' + filename)
+		os.system('open ' + filename)
+
 def IMO(year):
     for i in range(1,7):
         filename = "IMO-" + str(year) + "-" + str(i) + ".tex"
