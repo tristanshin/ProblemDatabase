@@ -1,0 +1,18 @@
+Let the incenters of $\triangle{ABD}$, $\triangle{ACD}$, and $\triangle{ABC}$ be $I_B$, $I_C$, and $I$, respectively. The key claim is that $\triangle{AII_B}\sim\triangle{AI_CD}$. Indeed, $\angle{I_BAI}=\frac{\angle{A}}{4}=\angle{DAI_C}$ and
+	\[
+		\angle{AII_B}=\angle{AIB}=\frac{\pi}{2}+\frac{\angle{C}}{2}=\angle{AI_CD}
+	\]
+	so the claim is true. It follows that $AD=\frac{AI_B\cdot AI_C}{AI}$. But note that $AI<AI_B$ because $\angle{AII_B}$ is obtuse; similarly $AI<AI_C$. So $AD=\frac{20\cdot18}{16}=\frac{45}{2}$.
+	\begin{center}
+		\begin{asy}
+			size(5cm);
+			import olympiad;
+			pair A=dir(100), B=dir(207), C=dir(333);
+			pair I=incenter(A,B,C), D=extension(A,I,B,C), IB=incenter(A,B,D), IC=incenter(A,C,D);
+			fill(A--I--IB--cycle, rgb(255,236,207));
+			fill(A--IC--D--cycle, rgb(230,255,242));
+			draw(A--B--C--cycle); draw(A--D, red+linewidth(1.2)); draw(B--IB); draw(IB--I, red+linewidth(1.2)); draw(C--I); draw(A--IB, red+linewidth(1.2)); draw(A--IC, red+linewidth(1.2)); draw(D--IC, red+linewidth(1.2));
+			dot(A); dot(B); dot(C); dot(I); dot(D); dot(IB); dot(IC);
+			label("$A$",A,A); label("$B$",B,B); label("$C$",C,C); label("$D$",D,dir(-90)); label("$I$",I,dir(B--I)); label("$I_B$",IB,dir(D--IB)); label("$I_C$",IC,dir(D--IC));
+		\end{asy}
+	\end{center}

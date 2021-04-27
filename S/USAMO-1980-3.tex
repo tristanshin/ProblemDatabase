@@ -1,0 +1,9 @@
+Let $\alpha=xe^{iA},\beta=ye^{iB},\gamma=ze^{iC}$, $P_n=\alpha^n+\beta^n+\gamma^n$, and $S_n$ be the $n$th symmetric sum of $\alpha,\beta,\gamma$. By Newton sums,
+\[
+	P_n=S_1P_{n-1}-S_2P_{n-2}+S_3P_{n-3}
+\]
+for $n\geq3$. Note that $F_n=\Im P_n$, so $P_0,P_1,P_2$ are real. By Newton sums, $S_1,S_2$ are real. Furthermore,
+\[
+	S_3=\alpha\beta\gamma=xyze^{i(A+B+C)}\in\RR.
+\]
+Thus by induction, $P_n$ is real for all $n\in\NN$, implying that $F_n=0$ for all $n\in\NN$ as desired.

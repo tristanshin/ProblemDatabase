@@ -1,0 +1,43 @@
+Without loss of generality let $AB<AC$. Let $\theta=\angle{ADB}$. Compute
+	\[
+		\cos\angle{ADI_A}=\frac{9^2+8^2-15^2}{2\cdot9\cdot8}=-\frac{5}{9},
+	\]
+	so $\sin\theta=\frac{5}{9}$ and $\cos\theta=\frac{2\sqrt{14}}{9}$. If the $A$-excircle touches $AB$ at $F$, then $AI_A^2=AF^2+EI_A^2$. But $FI_A=DI_A$, so $AF=\sqrt{161}$. But it is easy to see that $AF=s$ (semiperimeter), so $s=\sqrt{161}$.
+	
+	Now, extend ray $\overrightarrow{DB}$ to a point $A'$ such that $AB=A'B$. Since $BF=BD$ (equal tangents), we have that $A'D=AF=s$. Let $K$ be the foot of the $A$-altitude.
+	\begin{center}
+		\begin{asy}
+			size(7cm);
+			pair A=(2,5), B=(0,0), D=(6,0), AA=(-sqrt(29),0), K=(2,0);
+			draw(A--AA--D--cycle); draw(A--B); draw(B--(A+AA)/2, dashed); draw(A--K, dashed);
+			label("$A$", A, dir(90)); label("$B$", B, dir(-90)); label("$D$", D, dir(-90)); label("$A'$", AA, dir(-90)); label("$K$", K, dir(-90));
+		\end{asy}
+	\end{center}
+	
+	
+	Then $DK=AD\cos\theta$, so $A'K=s-AD\cos\theta$. Then
+	\[
+		\frac{s-AD\cos\theta}{AA'}=\cos\angle{AA'K}=\frac{\frac{AA'}{2}}{AB},
+	\]
+	so
+	\[
+		AB=\frac{AA'^2}{2(s-AD\cos\theta)}=\frac{s^2+AD^2-2s\cdot AD\cos\theta}{2(s-AD\cos\theta)}
+	\]
+	by the Law of Cosines. Thus
+	\[
+		AB=\frac{121-14\sqrt{46}}{\sqrt{161}-2\sqrt{14}}=\frac{13\sqrt{161}-16\sqrt{14}}{21}.
+	\]
+	By replacing $\theta$ with $\pi-\theta$ and swapping $B$ with $C$,
+	\[
+		AC=\frac{s^2+AD^2+2s\cdot AD\cos\theta}{2(s+AD\cos\theta)}=\frac{13\sqrt{161}+16\sqrt{14}}{21}.
+	\]
+	It follows that
+	\[
+		BC=2s-AB-AC=2\sqrt{161}-\frac{26\sqrt{161}}{21}=\frac{16\sqrt{161}}{21}.
+	\]
+	Thus the product of the side lengths is
+	\[
+		\frac{16\sqrt{161}}{21}\cdot\frac{13^2\cdot161-16^2\cdot14}{21^2}=\frac{2000\sqrt{161}}{49}
+	\]
+	as desired.
+	

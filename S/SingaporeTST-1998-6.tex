@@ -1,0 +1,24 @@
+Let the arithmetic progression be $\{a,a+d,a+2d,\dots\}$. The problem statement is equivalent to the following: if $a$ is a quadratic and cubic residue modulo $d$, then $a$ is a sixth power residue modulo $d$. We induce on $d$, with the base case of $d=1$ being verifiably true.
+
+Suppose $d>1$ and the statement is true for bases less than $d$.
+
+First, the problem is easy if $\gcd(a,d)=1$. Indeed, $a^3$ and $a^2$ are both sixth power residues mod $d$, so their quotient $a$ is too.
+
+Now, suppose $\gcd(a,d)>1$. Let $x^3\equiv y^2\equiv a\pmod d$. Let $p$ be a prime dividing $\gcd(a,d)$, with $k=\nu_p(\gcd(a,d))=\min\{\nu_p(a),\nu_p(d)\}$. We casework on $k$.
+\begin{itemize}
+	
+	\item $k\geq6$. Then
+	\[
+		\frac{x^3}{p^6}\equiv\frac{y^2}{p^6}\equiv\frac{a}{p^6}\pmod{\frac{d}{p^6}},
+	\]
+	so $\frac{a}{p^6}$ is both a quadratic and cubic residue mod $\frac{d}{p^6}$, so the inductive hypothesis implies that $\frac{a}{p^6}$ is a sixth power residue mod $\frac{d}{p^6}$. So we are done by multiplying by $p^6$.
+	
+	\item $k<6$. I claim that $\nu_p(d)=k$. Suppose not, then $\nu_p(a)=k<\nu_p(d)$. Then $x^3$ is $a$ plus a multiple of $d$. Since $\nu_p(a)<\nu_p(d)$, we have that $\nu_p(x^3)=\nu_p(a)$. Similarly, $\nu_p(y^2)=\nu_p(a)$, so $\nu_p(a)$ is divisible by $6$. But $k>0$, so this is a contradiction.
+	
+	So we have $\nu_p(d)=k$ and thus $\gcd(p,\frac{d}{p^k})=1$. Then
+	\[
+		\frac{x^3}{p^6}\equiv\frac{y^2}{p^6}\equiv\frac{a}{p^6}\pmod{\frac{d}{p^k}}.
+	\]
+	By the inductive hypothesis, $\frac{a}{p^6}$ is a sixth power residue mod $\frac{d}{p^k}$. Then $a$ is a sixth power mod $dp^{6-k}$ and thus mod $d$, so we are done.
+\end{itemize}
+Thus by induction, any number that is a quadratic and cubic residue modulo a base is a sixth power residue modulo the same base. This implies the problem as desired.

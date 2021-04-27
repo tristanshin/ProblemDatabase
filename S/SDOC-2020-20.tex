@@ -1,0 +1,37 @@
+First, let $I_n=\ds\int_0^1(1-x^2)^n\dx$ for $n\in\NN_0$; for $n\in\NN$ we have by integration by parts
+	\[
+		I_n=\int_0^1(1-x^2)^n\dx=x(1-x^2)^n\mid_{x=0}^1+2n\int_0^1 x^2(1-x^2)^{n-1}\dx=2n(I_{n-1}-I_n)
+	\]
+	so $I_n=\frac{2n}{2n+1}I_{n-1}$. Since $I_0=1$, we can induct to show that $I_n=\frac{4^n}{(2n+1)\binom{2n}{n}}$. Notably, $\ds\lim_{n\to\infty}\sqrt{n} I_n=\frac{\sqrt{\pi}}{2}$ by the given.
+	\begin{claim}
+		Let $f\colon[0,1]\to\RR$ be right-continuous at $0$ and $\{g_n\}$ be a sequence of functions $g_n\colon[0,1]\to\RR_{\geq0}$ such that each $g_n$ is non-increasing, $\ds\lim_{n\to\infty}g_n(x)=0$ for $x\neq0$, and $\ds\lim_{n\to\infty}\ds\int_0^1 g_n(x) \dx$ is finite. Then
+		\[
+			\lim_{n\to\infty}\int_0^1 f(x)g_n(x) \dx = f(0)\cdot\lim_{n\to\infty}\int_0^1 g_n(x) \dx.
+		\]
+	\end{claim}
+	Given this claim, we can solve the problem. Let
+	\[
+		f(x)=
+		\begin{cases}
+			\sin^{-1}\left(\sqrt{x+\frac{1}{2}}\right) & \text{if }-\frac{1}{2}\leq x\leq\frac{1}{2} \\
+			0 & \text{if else}
+		\end{cases}
+	\]
+	and $g_n(x)=\sqrt{n}(1-x^2)^n$. Then the claim implies that
+	\[
+		\lim_{n\to\infty}\sqrt{n}\int_0^{\frac{1}{2}}\sin^{-1}\left(\sqrt{x+\frac{1}{2}}\right)(1-x^2)^n \dx=\sin^{-1}\left(\sqrt{\frac{1}{2}}\right)\cdot\frac{\sqrt{\pi}}{2}=\frac{\pi^{3/2}}{8}.
+	\]
+	By a similar argument (flipping the claim over the $y$-axis), the other half of the limit-integral has the same value, so the answer is $\frac{\pi^{3/2}}{4}$.
+	
+	Now, we prove the claim. Write
+	\[
+		\int_0^1 f(x)g_n(x) \dx = \int_0^1 (f(x)-f(0))g_n(x) \dx + f(0)\cdot \int_0^1 g_n(x) \dx.
+	\]
+	It suffices to show that $J_n\coloneqq\ds\int_0^1(f(x)-f(0))g_n(x) \dx\to0$. Let $L=\ds\lim_{n\to\infty}\ds\int_0^1 g_n(x) \dx$ and $M=\max|f(x)|$ (which exists by the extreme value theorem). Fix $\eps>0$. Choose $\delta$ with $0<\delta<1$ such that $|f(x)-f(0)|<\frac{\eps}{2(L+1)}$ for all $x<\delta$. Then
+	\begin{align*}
+		|J_n| &\leq \int_0^\delta |f(x)-f(0)|\cdot g_n(x) \dx + \int_\delta^1 |f(x)-f(0)|\cdot g_n(x) \dx \\
+		&\leq \frac{\eps}{2(L+1)}\int_0^1 g_n(x) \dx + 2M\int_\delta^1 g_n(x) \dx \\
+		&\leq \frac{\eps}{2(L+1)}\int_0^1 g_n(x) \dx + 2M(1-\delta)g_n(\delta).
+	\end{align*}
+	Let $N$ be an integer such that for all $n\geq N$, $\left|\ds\int_0^1 g_n(x) \dx-L\right|<1$ and $g_n(\delta)<\frac{\eps}{4M(1-\delta)}$. Then the inequality above implies that $|J_n|<\eps$ for all $n\geq N$. Consequently, $\ds\lim_{n\to\infty}J_n=0$. The claim follows.
+	

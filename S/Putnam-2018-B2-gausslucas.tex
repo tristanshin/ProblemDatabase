@@ -1,0 +1,21 @@
+\begin{solutionlemma}
+	(Gauss-Lucas Theorem)
+	For $P\in\CC[X]$, the roots of $P'$ lie in the convex hull of the roots of $P$.
+\end{solutionlemma}
+\begin{lemmaproof}
+	Let $r_i$ be the roots of $P$ so that
+	\[
+		\frac{P'(z)}{P(z)}=\sum_i\frac{1}{z-r_i}
+	\]
+	for all $z\in\CC$. Let $s$ be a root of $P'$ so that
+	\[
+		0=\overline{\left(\frac{P'(z)}{P(z)}\right)}=\sum_i\frac{1}{\overline{s}-\overline{r_i}}=\sum_i\frac{s-r_i}{|s-r_i|^2},
+	\]
+	implying that
+	\[
+		s=\sum_ic_ir_i,
+	\]
+	where $c_i=\frac{|s-r_i|^{-2}}{\ds\sum_i|s-r_i|^{-2}}$. Consequently, $\ds\sum_i c_i=1$ and each $c_i$ is a non-negative real, so the conclusion follows.
+\end{lemmaproof}
+
+Equivalently, we show that $g_n(z)=nz^{n-1}+(n-1)z^{n-2}+\dots+2z+1=z^{n-1}f_n(z^{-1})$ has all roots in the open unit disk $\{z\in\CC : |z|<1\}$. Let $h_n(z)=z^n+z^{n-2}+\dots+z^2+z+1$ so that $h_n'(z)=g_n(z)$. By Gauss-Lucas, the roots of $g_n$ lie in the convex hull of the roots of $h_n$. But the roots of $h_n$ are all $(n+1)$-th roots of unity, so the roots of $g_n$ lie in the $(n+1)$-gon formed by these roots of unity. Note that no root of $g_n$ is at any of the vertices as it would correspond to a double root of $h_n$, so all roots of $g_n$ are in the open unit disk as desired.

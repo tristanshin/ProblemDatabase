@@ -1,0 +1,60 @@
+Note that $O_1O\perp AX$ and $O_2O\perp BX$. Using directed angles modulo $\pi$,
+\[
+	\measuredangle{O_1OO_2}=\measuredangle{(O_1O,O_2O)}=\measuredangle{(AX,BX)}=\measuredangle{ACB}.
+\]
+Let $P_1,P_2$ be the feet from $D$ to $AX,BX$; by a similar argument, $\measuredangle{P_1DP_2}=\measuredangle{ACB}$.
+
+From $\measuredangle{O_1OO_2}=\measuredangle{ACB}$, it suffices to minimize $OO_1\cdot OO_2$. Let $\rho$ denote unsigned power.
+\begin{greenboxtitle}{Claim}
+	\[
+		OO_1=\frac{\rho(D,\omega)}{2DP_1}\quad\text{and}\quad OO_2=\frac{\rho(D,\omega)}{2DP_2}
+	\]
+\end{greenboxtitle}
+\begin{lemmaproof}
+	We proceed using complex numbers with $\omega$ as the unit circle. The circumcenter of $\triangle{ADX}$ is at
+	\[
+		\frac{
+			\begin{vmatrix}
+				a & 1 & 1 \\
+				d & |d|^2 & 1 \\
+				x & 1 & 1
+			\end{vmatrix}
+		}{
+			\begin{vmatrix}
+				a & a^{-1} & 1 \\
+				d & d^{-1} & 1 \\
+				x & x^{-1} & 1
+			\end{vmatrix}
+		}
+		=
+		\frac{
+			\begin{vmatrix}
+				a & 0 & 1 \\
+				d & |d|^2-1 & 1 \\
+				x & 0 & 1
+			\end{vmatrix}
+		}{
+			\begin{vmatrix}
+				a & a^{-1} & 1 \\
+				d & d^{-1} & 1 \\
+				x & x^{-1} & 1
+			\end{vmatrix}
+		}
+		=
+		\frac{(|d|^2-1)(a-x)}{\frac{4}{i}[ADX]}.
+	\]
+	Taking the magnitude, we have that
+	\[
+		OO_1=\frac{\rho(D,\omega)\cdot AX}{4[ADX]}=\frac{\rho(D,\omega)}{2DP_1}
+	\]
+	as desired. The other result follows by symmetry.
+\end{lemmaproof}
+Note that
+\[
+	\frac{1}{2}DP_1\cdot DP_2\cdot\sin\angle{C}=[DP_1P_2]=\frac{\rho(D,\omega)\cdot[XAB]}{4R^2}
+\]
+since $\triangle{DP_1P_2}$ is the pedal triangle of $D$ w.r.t. $\triangle{XAB}$. Then
+\[
+	OO_1\cdot OO_2\propto\frac{\rho(D,\omega)^2}{DP_1\cdot DP_2}\propto\frac{\rho(D,\omega)}{[XAB]}\propto\frac{DA\cdot DB}{XA\cdot XB}=\frac{\sin\angle{DXA}}{\sin\angle{XDA}}\cdot\frac{\sin\angle{DXB}}{\sin\angle{XDB}}=\frac{\sin\angle{B}\sin\angle{A}}{\sin^2{\angle{ADX}}}
+\]
+so it suffices to maximize $\sin\angle{ADX}$. This occurs when $CX\perp AB$.

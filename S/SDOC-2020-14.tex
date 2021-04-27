@@ -1,0 +1,48 @@
+Let $\mathcal{S}_n$ be the $n$th iteration of Sierpi\'nski's triangle, and let $E_n$ be the answer for $\mathcal{S}_n$ where trivially $E_0=1$. We desire $E_4$.
+	
+	Consider the six ``main vertices'' of $\mathcal{S}_n$:
+	\begin{itemize}
+		\item The three corners of the triangle, and
+		\item The three (``inside'') vertices that are added in the first iteration.
+	\end{itemize}
+	The key claim is that the expected number of moves to travel from one of the main vertices to any of the adjacent main vertices is $E_{n-1}$. Indeed, the first move puts Bill the Belociraptor inside a copy of $\mathcal{S}_{n-1}$, and to reach either of the adjacent main vertices from there is just the same problem on $\mathcal{S}_{n-1}$.
+	\begin{center}
+		\begin{asy}
+			import cse5;
+			size(11cm);
+			real s = 3.5, R = s / sqrt(3);
+			pair top = R * dir(90);
+			void Sierpinski(pair A, real s, int q, bool top = true) {
+				pair B = A - s / 2 * (1, sqrt(3));
+				pair C = B + s;
+				if (top) draw(A -- B -- C -- cycle);
+				if (q > 0) draw((A + B) / 2 -- (B + C) / 2 -- (A + C) / 2 -- cycle);
+				if (q > 1) {
+					Sierpinski(A, s / 2, q - 1, false);
+					Sierpinski((A + B) / 2, s / 2, q - 1, false);
+					Sierpinski((A + C) / 2, s / 2, q - 1, false);
+				}
+			}
+			
+			Sierpinski(top, s, 1);
+			dot(top, red); dot(R * dir(210), red); dot(R * dir(330), red);
+			dot((top + R * dir(210))/2, red); dot((top + R * dir(330))/2, red); dot((R * dir(210) + R * dir(330))/2, red);
+			label("$E_{n-1}$", (top + R * dir(210))/2+0.3*dir(30), dir(30));
+			draw((top + R * dir(210))/2 + 0.1*dir(60) + 0.1*dir(150) -- (top + R * dir(210))/2 + 0.5*dir(60) + 0.1*dir(150), EndArrow);
+			draw((top + R * dir(210))/2 + 0.1*dir(0) - 0.1*dir(90) -- (top + R * dir(210))/2 + 0.5*dir(0) - 0.1*dir(90), EndArrow);
+			
+			add(shift(4,0)*CC());
+			
+			Sierpinski(top, s, 4);
+			dot(top, red); dot(R * dir(210), red); dot(R * dir(330), red);
+			dot((top + R * dir(210))/2, red); dot((top + R * dir(330))/2, red); dot((R * dir(210) + R * dir(330))/2, red);
+		\end{asy}
+	\end{center}
+	Let $a=E_n$ be the expected number of moves from the top corner to either of the bottom two corners, $b$ be the expected number of moves from one of the middle two inside main vertices to either of the bottom two corners, and $c$ be the expected number of moves from the bottom inside main vertex to either of the bottom two corners. Then Linearity of Expectation tells us that
+	\begin{align*}
+		a &= E_{n-1} + b \\
+		b &= E_{n-1} + \frac{1}{4}(a+b+c) \\
+		c &= E_{n-1} + \frac{1}{2}b.
+	\end{align*}
+	Solving this system for $a$ gives that $E_n=5E_{n-1}$. Thus $E_n=5^n$, so $E_4=625$.
+	

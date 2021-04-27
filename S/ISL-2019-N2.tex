@@ -1,0 +1,13 @@
+The answers are $(1,2,3)$ and permutations. WLOG let $a\geq b\geq c$.
+
+Suppose that $b\geq3$. Define the function $f(t)=t^3-b^2c^2t+b^3+c^3$ so that $a$ is a root of $f$. Observe that:
+\begin{align*}
+	f(-\infty) &= -\infty < 0 \\
+	f(0) &= b^3+c^3 > 0 \\
+	f(b) &= -b^3(bc^2-3)-(b^3-c^3) < 0 \\
+	f(b^2c^2-1) &= -2b^3(\frac{32}{81}b^2c^4-1)-(\frac{1}{9}b^2c^2-1)(\frac{17}{9}b^2c^2-1)-(b^3-c^3) < 0 \\
+	f(b^2c^2) &= b^3+c^3 > 0
+\end{align*}
+By the intermediate value theorem, $f$ has a root in each of the intervals $(-\infty,0),(0,b),(b^2c^2-1,b^2c^2)$. Since $f$ is a cubic polynomial, it no other roots. But then $f$ has no integer root at least $b$, which is a contradiction.
+
+Thus $b\leq2$. Check that the only solution is $(a,b,c)=(3,2,1)$ as desired.

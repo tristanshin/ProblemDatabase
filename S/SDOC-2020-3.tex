@@ -1,0 +1,18 @@
+Note that $\triangle{ABE}$ and $\triangle{ABC}$ share a common base of $AB$. Furthermore, the height from $E$ is twice that of $C$, so the area of $\triangle{ABE}$ is twice that of $\triangle{ABC}$. So the area of $\triangle{ABC}$ is $7$.
+	\begin{center}
+		\begin{asy}
+			size(6cm);
+			pair A=dir(120), B=dir(60), C=dir(0), D=dir(-60), E=dir(-120), F=dir(180);
+			draw(A--B--C--D--E--F--cycle);
+			draw(A--E,blue+linewidth(1.2)); draw(E--B); draw(A--C);
+			draw(B--B+(0.5,0),dashed); draw(B+(0.5,0)--C,blue+linewidth(1.2));
+			draw(A--B,red+linewidth(1.2));
+			label("$\frac{1}{2}AE$",(B+(0.5,0)+C)/2,dir(0));
+			label("$A$",A,A);
+			label("$B$",B,B);
+			label("$C$",C,C);
+			label("$D$",D,D);
+			label("$E$",E,E);
+			label("$F$",F,F);
+		\end{asy}
+	\end{center}

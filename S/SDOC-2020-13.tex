@@ -1,0 +1,39 @@
+Let $\mathcal{S}_n$ be the $n$th iteration of Sierpi\'nski's triangle, and let $C_n$ be the answer for $\mathcal{S}_n$ \textbf{and Jen the Jiraffe goes to the bottom left corner} where trivially $C_0=1$. We desire $2C_4$.
+	
+	The key claim is that the number of ways to get to each vertex in the second-to-last row of $\mathcal{S}_n$ is the same. We can prove this by induction. This is trivially true for $n=0,1$. Clearly, the number of ways to get to each of the midpoints of the left and right sides is the same by symmetry. By definition, this common value is $C_{n-1}$. Now, notice that the two copies of $\mathcal{S}_{n-1}$ on the bottom do not intersect paths until their bottom rows. Thus the number of ways to get to each vertex in each of these two copies is the same as in $\mathcal{S}_{n-1}$, except multiplied by $C_{n-1}$. Thus by the inductive hypothesis, the number of ways to get to each vertex in the second-to-last row of $\mathcal{S}_n$ is equidistributed. Let this common value be $D_n$. From this argument, $D_n=C_{n-1}D_{n-1}$.
+	\begin{center}
+		\begin{asy}
+			size(8cm);
+			defaultpen(fontsize(6pt));
+			real s = 3.5, R = s / sqrt(3);
+			pair top = R * dir(90);
+			void Sierpinski(pair A, real s, int q, bool top = true) {
+				pair B = A - s / 2 * (1, sqrt(3));
+				pair C = B + s;
+				if (top) draw(A -- B -- C -- cycle);
+				if (q > 0) draw((A + B) / 2 -- (B + C) / 2 -- (A + C) / 2 -- cycle);
+				if (q > 1) {
+					Sierpinski(A, s / 2, q - 1, false);
+					Sierpinski((A + B) / 2, s / 2, q - 1, false);
+					Sierpinski((A + C) / 2, s / 2, q - 1, false);
+				}
+			}
+			
+			Sierpinski(top, s, 4);
+			dot(top); dot(R * dir(210)); dot(R * dir(330));
+			label("$1$", top, W);
+			label("$D_{n-1}$", 9/16 * top + 7/16 * R * dir(210), W);
+			label("$C_{n-1}$", 1/2 * top + 1/2 * R * dir(210), W);
+			label("$C_{n-1}D_{n-1}$", 1/16 * top + 15/16 * R * dir(210), W);
+			label("$D_n$", R * dir(210), W);
+			dot(9/16 * top + 7/16 * R * dir(210)); dot(1/2 * top + 1/2 * R * dir(210)); dot(1/16 * top + 15/16 * R * dir(210));
+		\end{asy}
+	\end{center}
+	Furthermore, note that the number of ways to arrive at the bottom row at each of the vertices of the bottom row is $2D_n$, except for the two corners (where the value is $D_n$). There are $2^n-1$ non-corner bottom row vertices, each of which contributes $2D_n$ ways to eventually arrive at the bottom left corner. Adding in the $D_n$ ways to arrive directly on the bottom left corner, there are $(2^{n+1}-1)D_n$ ways for Jen the Jiraffe to eventually reach the bottom left corner. So $C_n=(2^{n+1}-1)D_n$.
+	
+	Combining these two, we get that $D_n=(2^n-1)D_{n-1}^2$ so $C_n=\frac{2^{n+1}-1}{2^n-1}C_{n-1}^2$. It easily follows that
+	\[
+		C_4=31\cdot15\cdot7^2\cdot3^4=1845585,
+	\]
+	so the answer is $2C_4=3691170$.
+	

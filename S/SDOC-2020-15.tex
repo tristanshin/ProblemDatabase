@@ -1,0 +1,15 @@
+Observe that
+	\begin{align*}
+		\sigma(n) &= \sum_{d\mid n}d = n+\sum_{\substack{d\mid n \\ d<n}}d \\
+		n &= \sum_{d\mid n}\varphi(d) = \varphi(n)+\sum_{\substack{d\mid n \\ d<n}}\varphi(d).
+	\end{align*}
+	Subtracting, we deduce that
+	\[
+		\sigma(n)-n = n-\varphi(n)+\sum_{\substack{d\mid n \\ d<n}}(d-\varphi(d))
+	\]
+	so we require
+	\[
+		\sum_{\substack{d\mid n \\ d<n}}(d-\varphi(d))\leq1.
+	\]
+	Clearly this sum is non-negative. If it equals $0$, then every proper divisor of $n$ is $1$. Thus $n$ must be $1$ or a prime. If it equals $1$, then $n$ has only one nontrivial proper divisor, and it is a prime. Thus $n$ must be a prime square. There are $25$ primes less than $100$ and $4$ prime squares less than $100$, so there are a total of $30$ valid values of $n$.
+	

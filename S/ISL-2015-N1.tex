@@ -1,0 +1,9 @@
+The answer is all $M$ besides $1$. We instead solve for the complement. Define the sequence $\{b_k\}$ as $b_k=a_k-\frac{1}{2}$; it is clear that $b_{k+1}=b_k^2+\frac{b_k-1}{2}$ and we wish to find all $b_0$ for which $\{b_k\}$ has only integer terms.
+
+The key claim is that if $b_0,\dots,b_n$ are all integers, then $b_m\equiv1\pmod{2^{n-m}}$ for $m=0,\dots,n-1$. We induce on $n$. The base case of $n=1$ is clear. Now, assume that $b_0,\dots,b_n,b_{n+1}$ are all integers. Let $b_m=2^{n-m-1}c_m+1$ for $m=0,\dots,n$; it suffices to prove that $c_m$ is an even integer. Applying the inductive hypothesis to $b_0,\dots,b_n$ and $b_1,\dots,b_{n+1}$, we deduce that $c_m$ is always an integer, and an even one for $m=1,\dots,n$. So it suffices to show that $c_0$ is even. But
+\[
+	2^{n-2}c_1+1=(2^{n-1}c_0+1)^2+2^{n-2}c_0\equiv2^{n-2}c_0+1\pmod{2^{n-1}}
+\]
+and $c_1$ is even, so $c_0$ is even as desired.
+
+Now, the answer is clear: if $\{b_k\}$ has only integer terms, then $b_0\equiv1\pmod{2^n}$ for all positive integers $n$, so $b_0$ must be $1$.

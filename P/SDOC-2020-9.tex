@@ -1,0 +1,59 @@
+Fill in the following (currently blank) grid so that:
+	\begin{itemize}
+		\item Each box contains a single digit in the set $\{1,\dots,9\}$.
+		\item A \vocab{segment} is the set of boxes in a row or column from one black box to another, with no black boxes in between. There are $16$ segments in this grid.
+		
+		If two boxes are in the same segment, then they contain different digits.
+		\item The digits in each segment sum to the number labelling the segment.
+	\end{itemize}
+	\begin{center}
+		\begin{asy}
+			defaultpen(fontsize(15pt));
+			size(15cm);
+			pair[] blacksquares = {
+				(0,0), (0,1), (0,2), (0,3), (0,4), (0,5), (0,6),
+				(1,0), (1,1), (1,5), (1,6),
+				(2,6),
+				(3,2), (3,3), (3,6),
+				(4,2), (4,3), (4,6),
+				(5,6),
+				(6,0), (6,4), (6,5), (6,6),
+			};
+			int[] lowerlabels = {
+				0, 0, 0, 0, 0, 0, 0,
+				0, 0, 22, 0,
+				35,
+				9, 0, 9,
+				12, 0, 3,
+				25,
+				0, 17, 0, 0,
+			};
+			int[] rightlabels = {
+				0, 0, 9, 15, 15, 0, 0,
+				13, 27, 26, 0,
+				0,
+				0, 0, 0,
+				14, 13, 0,
+				0,
+				0, 0, 0, 0,
+			};
+			for (int j = 0; j < blacksquares.length; ++j) {
+				pair P = blacksquares[j];
+				fill(P -- P + (1,0) -- P + (1,1) -- P + (0,1) -- cycle, gray(0.7));
+				draw(P + (1,0) -- P + (0,1));
+				if (lowerlabels[j] != 0) {
+					label(string(lowerlabels[j]), P + (0.25, 0.25));
+					draw(P + (0.5,0.35) -- P + (0.5,0.1), arrow = Arrow(TeXHead));
+				}
+				if (rightlabels[j] != 0) {
+					label(string(rightlabels[j]), P + (0.75, 0.75));
+					draw(P + (0.65,0.5) -- P + (0.9,0.5), arrow = Arrow(TeXHead));
+				}
+			}
+			for (int i = 0; i <= 7; ++i) {
+				draw((i,0) -- (i,7));
+				draw((0,i) -- (7,i));
+			}
+		\end{asy}
+	\end{center}
+	

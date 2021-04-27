@@ -1,0 +1,38 @@
+Let the rectangle partition the triangle into the regions labelled as follows (figure not drawn to scale):
+	\begin{center}
+		\begin{asy}
+			size(7cm);
+			pair A=(5,12), B=(0,0), C=(14,0);
+			pair P=(2,0), Q=(2,4.8), R=(10.4,4.8), S=(10.4,0);
+			draw(A--B--C--cycle); draw(P--Q--R--S);
+			label("$\mathcal{A}$",(A+Q+R)/3);
+			label("$\mathcal{B}$",(B+P+Q)/3);
+			label("$\mathcal{C}$",(C+R+S)/3);
+			label("$\mathcal{R}$",(P+Q+R+S)/4);
+		\end{asy}
+	\end{center}
+	Observe that by ``shifting'' region $\mathcal{C}$ to the left to adjoin it with $\mathcal{B}$, we form a triangle that is similar to $\triangle{ABC}$ and to $\mathcal{A}$.
+	\begin{center}
+		\begin{asy}
+			size(7cm);
+			pair A=(5,12), B=(0,0), C=(14,0);
+			pair P=(2,0), Q=(2,4.8), R=(10.4,4.8), S=(10.4,0);
+			draw(A--B--C--cycle); draw(P--Q--R--S);
+			label("$\mathcal{A}$",(A+Q+R)/3);
+			label("$\mathcal{B}$",(B+P+Q)/3);
+			label("$\mathcal{C}$",(C+R+S)/3);
+			pair CC=(5.6,0);
+			draw(Q--CC,dashed);
+			label("``$\mathcal{C}$''",(CC+Q+P)/3);
+		\end{asy}
+	\end{center}
+	Letting $AQ=x$ and $QB=y$, we have that
+	\begin{align*}
+		\frac{[\mathcal{A}]}{[\mathcal{B}]+[\mathcal{C}]} &= \frac{x^2}{y^2} \\
+		\frac{[\mathcal{A}]}{[\mathcal{A}]+[\mathcal{B}]+[\mathcal{R}]+[\mathcal{C}]} &= \frac{x^2}{(x+y)^2}
+	\end{align*}
+	since area is proportional to the square of the side in similar triangles. It follows that
+	\[
+		\frac{[\mathcal{R}]}{[\mathcal{A}]}=\frac{(x+y)^2}{x^2}-\frac{y^2}{x^2}-1=\frac{2y}{x}=2\sqrt{\frac{[\mathcal{B}]+[\mathcal{C}]}{[\mathcal{A}]}}.
+	\]
+	Thus $[\mathcal{R}]=2\sqrt{[\mathcal{A}]\cdot([\mathcal{B}]+[\mathcal{C}])}$. By the problem conditions, we know that the areas of $\mathcal{A},\mathcal{B},\mathcal{C}$ are $5,7,18$ in some order. To maximize the area of $\mathcal{R}$, small computation tells us that we should choose $[\mathcal{A}]=18$, giving the maximum value as $2\sqrt{18\cdot12}=12\sqrt{6}$.

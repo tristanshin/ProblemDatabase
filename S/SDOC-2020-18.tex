@@ -1,0 +1,20 @@
+By Pascal's theorem on $AAYJKX$, we have that $PA$ is tangent to $(AJK)$. Since $\angle{XAJ}=\angle{YAK}$, $XY$ is parallel to $BC$. Thus $PA$ is tangent to $(ABC)$. Then $PA\parallel EF$ since both are perpendicular to $AO$, where $O$ is the circumcenter of $\triangle{ABC}$. Thus $[PEF]=[AEF]=[ABC]\cos^2 A$. From Heron's formula, we have that $[ABC]=12\sqrt{5}$. From the Law of Cosines, $\cos A=\frac{11}{21}$. Thus $[PEF]=\frac{484\sqrt{5}}{147}$.
+	\begin{center}
+		\begin{asy}
+			size(14cm);
+			import olympiad;
+			pair A=(2,3*sqrt(5)), B=(0,0), C=(8,0), J=(3,0), K=(245/61,0);
+			pair X = intersectionpoints(A--B, circumcircle(A,J,K))[1];
+			pair Y = intersectionpoints(A--C, circumcircle(A,J,K))[1];
+			pair M = extension(J, Y, A, B);
+			pair N = extension(K, X, A, C);
+			pair P = extension(M, N, B, C);
+			pair E = foot(B, A, C), F = foot(C, A, B);
+			pair O = circumcenter(A,B,C);
+			fill(P--E--F--cycle,rgb(255,236,207));
+			draw(A--B--C--cycle); draw(circumcircle(A,B,C)); draw(circumcircle(A,J,K)); draw(A--J, dotted); draw(A--K,dotted); draw(X--N,dotted); draw(Y--M,dotted); draw(B--M); draw(C--N); draw(B--P); draw(P--N,blue); draw(A--P,red+linewidth(1.2)); draw(E--F,red+linewidth(1.2)); draw(P--E,dotted); draw(P--F,dotted);
+			label("$A$", A, dir(O--A)); label("$B$", B+(0,-0.2), dir(O--B)); label("$C$", C+(0.2,0.4), dir(O--C)); label("$J$", J, dir(-90)); label("$K$", K, dir(-90)); label("$X$", X, dir(180)); label("$Y$", Y, dir(0)); label("$M$", M, dir(90)*dir(N--M)); label("$N$", N, dir(90)*dir(N--M)); label("$P$", P, dir(O--P));
+			dot(A); dot(B); dot(C); dot(J); dot(K); dot(X); dot(Y); dot(M); dot(N); dot(P); dot(E); dot(F);
+		\end{asy}
+	\end{center}
+	

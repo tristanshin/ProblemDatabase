@@ -1,0 +1,91 @@
+\begin{center}
+	\begin{asy}
+		import olympiad;
+		size(8.24cm);
+		pair A=dir(131), B=dir(180+26), C=dir(360-26), I=incenter(A,B,C), D=foot(I,B,C), E=foot(I,C,A), F=foot(I,A,B);
+		pair J=extension(A,I,B,C), M=dir(-90), N=dir(90), K=extension(I,D,J,J+dir(M--D)), Q=extension(I,N,K,K+dir(90)*dir(A--I));
+		pair L=(B+C)/2; pair QQ=foot(Q,A,I);
+		draw(I--D,dotted); draw(N--M,dotted); draw(J--K,brown+dotted); draw(M--D,brown+dotted); draw(Q--N,red+linewidth(1.2)); draw(Q--QQ,darkgreen+dotted);
+		draw(I--L,dotted); draw(A--N,dotted);
+		draw(incircle(A,B,C), blue); draw(circumcircle(A,B,C), purple); draw(A--B--C--cycle); draw(A--M); draw(D--Q,dotted);
+		label("$A$",A,dir(A)); label("$B$",B,dir(B)); label("$C$",C,dir(C)); label("$I$",I,-dir(I)); label("$D$",D+(-0.03,0),dir(I--D));
+		label("$J$",J+(-0.033),dir(I--D)); label("$M$",M,dir(M)); label("$N$",N,dir(N)); label("$K$",K,dir(288)); label("$Q$",Q,dir(K--Q));
+		label("$L$",L,dir(-45)); label("$Q'$",QQ,dir(Q--K));
+		dot(A); dot(B); dot(C); dot(I); dot(D);
+		dot(J); dot(M); dot(N); dot(K); dot(Q);
+		dot(L); dot(QQ);
+	\end{asy}
+\end{center}
+
+\textbf{Solution 1.} (Nikolai Beluhov) Redefine $Q$ so that $DQ\parallel AI$ and $QK\perp AI$; it suffices to show that $Q\in IN$. Define $L$ to be the midpoint of $BC$ and $Q'$ to be the foot of $Q$ onto $AI$.
+
+The first claim is that $\triangle{IDL}\sim\triangle{IAN}$. To show this, first note that
+\[
+	\frac{ML}{MI}=\frac{ML}{MB}=\frac{MB}{MN}
+\]
+by the Incenter-Excenter lemma and $\triangle{BLM}\sim\triangle{NBM}$. Thus $\triangle{MLI}\sim\triangle{MIN}$. Then (using directed angles mod $\pi$)
+\[
+	\measuredangle{ILD}=\measuredangle{ILM}-\measuredangle{DLM}=\measuredangle{MIN}-\frac{\pi}{2}=\measuredangle{AIN}+\frac{\pi}{2}=\measuredangle{ANI},
+\]
+so $\triangle{IDL}\sim\triangle{IAN}$ as desired.
+
+The second claim is that the configurations $IQ'DKQ$ and $IDMJL$ are similar. Clearly $\triangle{IQ'K}\sim\triangle{IDJ}$. With respect to these two triangles, $D$ and $M$ are corresponding points because $KJ\parallel DM$ implies $\frac{IK}{ID}=\frac{IJ}{IM}$. Finally, $Q$ is the point on $Q'K$ such that $DQ\parallel IQ'$, and $L$ is the point on $DJ$ such that $ML\parallel ID$, so $Q$ and $L$ correspond in these configuration.
+
+The two claims imply that $\triangle{IQ'Q}\sim\triangle{IDL}\sim\triangle{IAN}$, whence $Q\in IN$ as desired.
+\hfill$\blacksquare$
+
+\begin{center}
+	\begin{asy}
+		import olympiad;
+		size(10cm);
+		pair A=dir(131), B=dir(180+26), C=dir(360-26), I=incenter(A,B,C), D=foot(I,B,C), E=foot(I,C,A), F=foot(I,A,B);
+		pair J=extension(A,I,B,C), M=dir(-90), N=dir(90), K=extension(I,D,J,J+dir(M--D)), Q=extension(I,N,K,K+dir(90)*dir(A--I));
+		pair QQ=foot(Q,A,I), T=(I+foot(I,2*M-I,extension(A,N,B,C)))/2, R=extension(T,M,B,C);
+		draw(I--D,dotted); draw(J--K,brown+dotted); draw(M--D,brown+dotted); draw(T--N); draw(Q--QQ,darkgreen+dotted);
+		draw(M--R); draw(R--B); draw(D--T); draw(M--B,dotted); draw(QQ--D,dotted);
+		draw(incircle(A,B,C), blue); draw(circumcircle(A,B,C), purple); draw(A--B--C--cycle); draw(A--M); draw(D--Q,dotted);
+		label("$A$",A,dir(A)); label("$B$",B,dir(B)); label("$C$",C,dir(C)); label("$I$",I,-dir(I)); label("$D$",D+(-0.03,0),dir(I--D));
+		label("$J$",J+(-0.033),dir(I--D)); label("$M$",M,dir(M)); label("$N$",N,dir(N)); label("$K$",K,dir(288)); label("$Q$",Q,dir(K--Q));
+		label("$Q'$",QQ,dir(Q--K)); label("$T$",T,dir(T)); label("$R$",R,dir(R));
+		dot(A); dot(B); dot(C); dot(I); dot(D);
+		dot(J); dot(M); dot(N); dot(K); dot(Q);
+		dot(QQ); dot(T); dot(R);
+	\end{asy}
+\end{center}
+
+\textbf{Solution 2.} (Kevin Ren) Let $Q'$ be the foot of $Q$ onto $AI$, $T$ be the second intersection of $IN$ with $\Gamma$, and $R$ be the intersection of $TM$ with $BC$. Then $KQ'JD$ is cyclic because $\measuredangle{KQ'J}=\frac{\pi}{2}=\measuredangle{KDJ}$, so (using directed angles mod $\pi$)
+\[
+	\measuredangle{IDQ'}=\measuredangle{KJQ'}=\measuredangle{DMI}.
+\]
+It follows that $\triangle{IDQ'}\sim\triangle{IMD}$, so $ID^2=IQ'\cdot IM$. Now, $QQ'MT$ is cyclic because $\measuredangle{QQ'M}=\frac{\pi}{2}=\measuredangle{QTM}$, so $IQ'\cdot IM=IQ\cdot IT$. It follows that $\triangle{IDQ}\sim\triangle{ITD}$, so $\measuredangle{IDQ}=\measuredangle{DTI}$. Finally, note that
+\[
+	\measuredangle{MBR}=\measuredangle{MBC}=\measuredangle{BCM}=\measuredangle{BTM},
+\]
+so $\triangle{MBT}\sim\triangle{MRB}$, whence $MB^2=MT\cdot MR$. But $MI^2=MB^2$ by the Incenter-Excenter lemma, so $AI$ is tangent to the circumcircle of $\triangle{ITR}$. But $IDTR$ is cyclic because $\measuredangle{IDR}=\frac{\pi}{2}=\measuredangle{ITR}$, so $\measuredangle{IDQ}=\measuredangle{DTI}=\measuredangle{DIM}$. It follows that $DQ\parallel AI$ so $DQ\perp EF$ as desired.
+\hfill$\blacksquare$
+
+\begin{center}
+	\begin{asy}
+		import olympiad;
+		size(12cm);
+		pair A=dir(131), B=dir(180+26), C=dir(360-26), I=incenter(A,B,C), D=foot(I,B,C), E=foot(I,C,A), F=foot(I,A,B);
+		pair J=extension(A,I,B,C), M=dir(-90), N=dir(90), K=extension(I,D,J,J+dir(M--D)), Q=extension(I,N,K,K+dir(90)*dir(A--I));
+		pair R=orthocenter(M,I,D), T=(I+foot(I,2*M-I,extension(A,N,B,C)))/2;
+		fill(R--I--M--cycle,rgb(255,236,207));
+		draw(J--K,brown+dotted); draw(T--N,darkgreen+dotted); draw(Q--foot(K,A,I),darkgreen+dotted); draw(T--M,darkgreen+dotted);
+		draw(R--M,rgb(0,204,153)); draw(R--I,rgb(0,204,153)); draw(R--foot(D,A,I),rgb(0,204,153)); draw(I--foot(I,R,M),rgb(0,204,153)); draw(M--foot(M,I,R),rgb(0,204,153));
+		draw(incircle(A,B,C), blue); draw(circumcircle(A,B,C), purple); draw(A--B--C--cycle); draw(A--M,red+linewidth(1.2)); draw(D--Q,red+linewidth(1.2));
+		label("$A$",A,dir(A)); label("$B$",B,dir(B)); label("$C$",C,dir(C)); label("$I$",I,-dir(I)); label("$D$",D,dir(I--D));
+		label("$J$",J+(-0.033),dir(I--D)); label("$M$",M,dir(M)); label("$N$",N,dir(N)); label("$K$",K,dir(288)); label("$Q$",Q,dir(D--Q));
+		label("$R$",R,dir(R)); label("$T$",T,dir(T));
+		dot(A); dot(B); dot(C); dot(I); dot(D);
+		dot(J); dot(M); dot(N); dot(K); dot(Q);
+		dot(R); dot(T);
+	\end{asy}
+\end{center}
+
+\textbf{Solution 3.} We proceed by taking the polar dual with respect to the incircle. For a line $\ell$, let $\infty_{\ell}$ be the point at infinity with respect to $\ell$ and $\infty_{\perp\ell}$ be the point at infinity with respect to lines perpendicular to $\ell$.
+
+Let $R$ be the orthocenter of $\triangle{MID}$. Then $RD\perp AI$, $RI\perp DM$, and $RM\parallel BC$. Check that $D\infty_{\perp AI}$ and $I\infty_{\perp DM}$ are the polars of $J$ and $\infty_{DM}$, so $R$ is the pole of $J\infty_{DM}$. We also have that $\infty_{BC}$ is the pole of $ID$, so $RM$ is the polar of $K=J\infty_{DM}\cap ID$. Then $M$ lies on the polar of both $K$ and $\infty_{\perp AI}$, so $M$ is the pole of $K\infty_{\perp AI}$. Additionally $\infty_{\perp IN}$ is the pole of $IN$, so $M\infty_{\perp IN}$ is the polar of $Q=K\infty_{\perp AI}\cap IN$. Let the $A$-mixtilinear incircle touch $\Gamma$ at $T$. It is well-known that $T\in IN$, so $TM\perp IN$ and thus $TM$ is the polar of $Q$.
+
+It is also well-known that $BC$, $TM$, and the line through $I$ perpendicular to $AI$ are concurrent. Taking the polar dual, we have that $D,Q,\infty_{AI}$ are collinear. Since $AI\perp EF$, this implies that $DQ\perp EF$.

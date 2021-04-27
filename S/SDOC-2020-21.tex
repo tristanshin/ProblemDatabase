@@ -1,0 +1,13 @@
+The answer is $1,2,3,4,5,6,7,9,11,13,17,19,23,29,31$.
+
+First, we show that all composites besides $4,6,9$ are sweet. Note that all composites $n$ besides these can be written in the form $ab$ for $a\geq4,b\geq2$. Then we can use $n=b+b+b+(a-3)b$.
+
+Next, we show that all primes larger than $31$ are sweet. If $n\equiv1\pmod6$, then $n\geq37$ so we can use $n=6k+6+10+15$. If $n\equiv5\pmod6$, then $n\geq41$ so we can use $n=6k+10+10+15$.
+
+Now, we show that $n\leq9$ except $n=8$ is bitter. The observation we need is that $1$ cannot be used as part of the representation (this is true because $1$ is relatively prime to all positive integers). Thus $1,2,\dots,7$ are bitter. Similarly, $9$ is bitter because the only possible representation would be $2+2+2+3$ which does not work.
+
+All that remains is to show that primes $p\leq31$ are bitter. Suppose that $p$ is sweet. Further assume that a prime power $q^m$ (for a prime $q$) is used in the representation of $p$. Then $q$ must divide each term of the representation, so $q$ divides $p$ and thus $p=q$. But then the remaining terms of the representation are non-positive, so this would not work. Thus no prime power can be used in the representation.
+
+Thus $p$ is an odd integer that is the sum of four non-prime-powers. One of the four integers in the representation must be odd. The smallest non-prime-power is $6$, while the smallest odd non-prime-power is $15$. Thus $p\geq6+6+6+15=33$, contradiction. Thus $p$ is bitter.
+
+These cases demonstrate that the answer is as written above.

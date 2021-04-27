@@ -1,0 +1,5 @@
+Let $X_i$ be $1$ if the $i$th pair of twins wins a prize, and $0$ if the $i$th pair does not win a prize. Then the answer is
+	\[
+		\EE[X_1+\dots+X_{150}]=\EE[X_1]+\dots+\EE[X_{150}].
+	\]
+	But observe that the $i$th pair wins whenever the second twin sits to the left or right of the first twin, so the $i$th pair wins with probability $\frac{2}{299}$. It follows that the answer is $150\cdot\frac{2}{299}=\frac{300}{299}$.

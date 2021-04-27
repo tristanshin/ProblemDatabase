@@ -1,0 +1,89 @@
+The answer is below. One key strategy to solving the puzzle is recognizing that the sum of the digits in a $3\times3$ square, a row, or a column is $45$. If we know the sum of $8$ of the digits in such a structure, then this allows us to compute the last digit. We can apply this, along with similar strategies and a few case checks, to solve the puzzle.
+	\begin{center}
+		\begin{asy}
+			defaultpen(fontsize(7pt));
+			size(10.8cm);
+			real c = 0.1;
+			path r(real llcx, real llcy, real deltax, real deltay) {
+				return (llcx,llcy)+(c,c) -- (llcx+deltax,llcy)+(-c,c) -- (llcx+deltax,llcy+deltay)+(-c,-c) -- (llcx,llcy+deltay)+(c,-c) -- cycle;
+			}
+			path weirdone = (2,4)+(c,c) -- (4,4)+(-c,c) -- (4,6)+(-c,-c) -- (3,6)+(c,-c) -- (3,5)+(c,-c) -- (2,5)+(c,-c) -- cycle;
+			path weirdtwo = (4,4)+(c,c) -- (7,4)+(-c,c) -- (7,5)+(-c,-c) -- (6,5)+(-c,-c) -- (6,6)+(-c,-c) -- (5,6)+(c,-c) -- (5,5)+(c,-c) -- (4,5)+(c,-c) -- cycle;
+			path weirdthree = (6,2)+(c,c) -- (8,2)+(c,c) -- (8,1)+(c,c) -- (9,1)+(-c,c) -- (9,3)+(-c,-c) -- (6,3)+(c,-c) -- cycle;
+			path weirdfour = (6,5)+(c,c) -- (7,5)+(c,c) -- (7,4)+(c,c) -- (8,4)+(-c,c) -- (8,6)+(-c,-c) -- (6,6)+(c,-c) -- cycle;
+			path[] dashedshapes = {
+				r(0,0,1,2), r(0,2,1,2), r(0,4,2,1), r(0,5,1,2), r(0,7,1,2),
+				r(1,0,3,1), r(1,1,1,2), r(1,3,2,1), r(1,5,2,1), r(1,6,1,2), r(1,8,3,1),
+				r(2,1,1,2), weirdone, r(2,6,1,2),
+				r(3,1,3,1), r(3,2,3,1), r(3,3,3,1), r(3,6,1,2),
+				r(4,0,3,1), weirdtwo, r(4,5,1,3), r(4,8,2,1),
+				r(5,6,1,2),
+				r(6,1,2,1), weirdthree, r(6,3,3,1), weirdfour, r(6,6,2,1), r(6,7,1,2),
+				r(7,0,2,1), r(7,7,1,2),
+				r(8,4,1,3), r(8,7,1,2),
+			};
+			pen cgreen = rgb("CCFFCC"), corange = rgb("FFCC99"), cpurple = rgb("E5CCFF"), cyellow = rgb("FFFFCC"), cblue = rgb("99CCFF");
+			pen[] shapecolors = {
+				cgreen, corange, cpurple, cyellow, cpurple,
+				cblue, cpurple, cgreen, corange, cblue, cgreen,
+				cyellow, cblue, cyellow,
+				cgreen, cpurple, corange, corange,
+				cyellow, cyellow, cpurple, cblue,
+				cgreen,
+				corange, cblue, cgreen, cpurple, cblue, cyellow,
+				cgreen, cgreen,
+				cyellow, corange,
+			};
+			for (int j = 0; j < dashedshapes.length; ++j) {
+				fill(dashedshapes[j], shapecolors[j]);
+				draw(dashedshapes[j], dotted);
+			}
+			pair[] labelcorners = {
+				(0,2), (0,4), (0,5), (0,7), (0,9),
+				(1,1), (1,3), (1,4), (1,6), (1,8), (1,9),
+				(2,3), (3,6), (2,8),
+				(3,2), (3,3), (3,4), (3,8),
+				(4,1), (5,6), (4,8), (4,9),
+				(5,8),
+				(6,2), (6,3), (6,4), (6,6), (6,7), (6,9),
+				(7,1), (7,9),
+				(8,7), (8,9),
+			};
+			int[] sumlabels = {
+				9, 14, 10, 9, 10,
+				13, 5, 6, 8, 17, 10,
+				17, 11, 9,
+				21, 11, 14, 13,
+				11, 24, 19, 15,
+				5,
+				4, 25, 16, 8, 11, 11,
+				14, 17,
+				14, 4,
+			};
+			for (int j = 0; j < labelcorners.length; ++j) label(string(sumlabels[j]), labelcorners[j] + 2.5 * (c,-c));
+			int[] solutionlabels = {
+				7, 2, 5, 9, 3, 8, 1, 6, 4,
+				6, 4, 1, 5, 7, 2, 9, 8, 3,
+				3, 8, 9, 1, 4, 6, 7, 2, 5,
+				4, 9, 3, 7, 6, 1, 8, 5, 2,
+				1, 5, 2, 4, 8, 9, 3, 7, 6,
+				8, 7, 6, 3, 2, 5, 4, 1, 9,
+				2, 1, 8, 6, 9, 3, 5, 4, 7,
+				5, 3, 7, 2, 1, 4, 6, 9, 8,
+				9, 6, 4, 8, 5, 7, 2, 3, 1,
+			};
+			for (int c = 0; c < 9; ++c) {
+				for (int r = 0; r < 9; ++r) {
+					label(string(solutionlabels[9 * c + r]), (c,r)+(0.5,0.5), p = fontsize(12pt));
+				}
+			}
+			for (int i = 0; i <= 9; ++i) {
+				draw((i,0) -- (i,9));
+				draw((0,i) -- (9,i));
+			}
+			for (int i = 0; i <= 3; ++i) {
+				draw((3 * i,0) -- (3 * i,9), linewidth(1.7));
+				draw((0,3 * i) -- (9,3 * i), linewidth(1.7));
+			}
+		\end{asy}
+	\end{center}

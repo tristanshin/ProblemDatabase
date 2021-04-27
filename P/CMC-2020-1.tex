@@ -1,0 +1,8 @@
+Consider an $n\times n$ unit-square board. The main diagonal of the board is the $n$ unit squares along the diagonal from the top left to the bottom right. We have an unlimited supply of tiles of this form:
+\begin{center}
+	\begin{asy}
+		size(1.5cm);
+		draw((0,1)--(1,1)--(1,2)--(0,2)--(0,1)--(0,0)--(1,0)--(2,0)--(2,1)--(1,1)--(1,0));
+	\end{asy}
+\end{center}
+The tiles may be rotated. We wish to place tiles on the board such that each tile covers exactly three unit squares, the tiles do not overlap, every unit square on the main diagonal is not covered, and all other unit squares are covered exactly once. For which $n\geq2$ is this possible?

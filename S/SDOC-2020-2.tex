@@ -1,0 +1,5 @@
+Suppose that $2^a+2^b+2^c=2^d$. If any of $a,b,c$ is at least $d$, then the LHS is greater than the RHS, which is bad. So we require $a,b,c\leq d-1$. If $a,b,c\leq d-2$, then the LHS is less than the RHS, which is bad. So one of $a,b,c$ must be equal to $d-1$. Without loss of generality let $c=d-1$, then $2^a+2^b=2^{d-1}$.
+	
+	If any of $a,b$ is at least $d-1$, then the LHS is greater than the RHS, which is bad. If any of $a,b$ is at most $d-3$, then the LHS is less than the RHS, which is bad. So $a=b=d-2$.
+	
+	Thus we can characterize all such tuples $(a,b,c)$ as $(n,n,n+1)$ or their permutations. This works for $n=1,\dots,2019$ for a total of $3\cdot2019=6057$ tuples that work.

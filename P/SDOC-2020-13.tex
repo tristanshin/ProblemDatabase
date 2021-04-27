@@ -1,0 +1,73 @@
+Below is the fourth iteration of Sierpi\'nski's triangle with side length $16$ units. Jen the Jiraffe starts at the top corner of the triangle and is trying to get to either of the two bottom corners.
+	\begin{center}
+		\begin{asy}
+			size(7cm);
+			real s = 3.5, R = s / sqrt(3);
+			pair top = R * dir(90);
+			void Sierpinski(pair A, real s, int q, bool top = true) {
+				pair B = A - s / 2 * (1, sqrt(3));
+				pair C = B + s;
+				if (top) draw(A -- B -- C -- cycle);
+				if (q > 0) draw((A + B) / 2 -- (B + C) / 2 -- (A + C) / 2 -- cycle);
+				if (q > 1) {
+					Sierpinski(A, s / 2, q - 1, false);
+					Sierpinski((A + B) / 2, s / 2, q - 1, false);
+					Sierpinski((A + C) / 2, s / 2, q - 1, false);
+				}
+			}
+			
+			Sierpinski(top, s, 4);
+			dot(top); dot(R * dir(210)); dot(R * dir(330));
+			label("Jen the Jiraffe", top + (0.07, 0), E);
+		\end{asy}
+	\end{center}
+	Every second, she travels $1$ unit along one of the segments in the diagram. She will only travel downwards, unless there is no option to travel downwards. In this case, she will either move left until she can travel downwards again, or move right until she can travel downwards again. She stops when she reaches either of the two bottom corners. Here are some possible paths that Jen the Jiraffe could take:
+	\begin{center}
+		\begin{asy}
+			import cse5;
+			size(11cm);
+			real s = 3.5, r = s / 2 / sqrt(3), R = 2r;
+            pair top = R * dir(90);
+            pair start, end;
+			void Sierpinski(pair A, real s, int q, bool top = true) {
+				pair B = A - s / 2 * (1, sqrt(3));
+				pair C = B + s;
+				if (top) draw(A -- B -- C -- cycle);
+				if (q > 0) draw((A + B) / 2 -- (B + C) / 2 -- (A + C) / 2 -- cycle);
+				if (q > 1) {
+					Sierpinski(A, s / 2, q - 1, false);
+					Sierpinski((A + B) / 2, s / 2, q - 1, false);
+					Sierpinski((A + C) / 2, s / 2, q - 1, false);
+				}
+			}
+            pair DLM = s / 16 * dir(240), DRM = s / 16 * dir(300), LM = s / 16 * dir(180), RM = s / 16 * dir(0);
+            
+			Sierpinski(top, s, 4);
+            pair[] P2 = {
+            	DLM, DRM, LM, DRM, DRM, RM, RM, DRM, DRM, DRM, DLM, LM, LM, LM, LM, LM, LM, LM,
+                DLM, DLM, DRM, DLM, LM, DRM, DRM, DLM, DRM, LM, LM, LM,
+            };
+            start = top;
+            for (int i = 0; i < P2.length; ++i) {
+            	end = start + P2[i];
+                draw(start -- end, red+linewidth(1.5));
+                start = end;
+            }
+            dot(top); dot(R * dir(210)); dot(R * dir(330));
+            
+            add(shift(4,0)*CC());
+            Sierpinski(top, s, 4);
+            pair[] P1 = {
+            	DLM, DLM, DLM, DRM, LM, DLM, DLM, DLM, DLM,
+                DLM, DRM, RM, DLM, DRM, LM, LM, LM, DLM, DRM, LM, DLM, DRM, RM, RM, RM, RM, RM, RM, RM, RM, RM, RM, RM, RM, RM, RM, RM,
+            };
+            start = top;
+            for (int i = 0; i < P1.length; ++i) {
+            	end = start + P1[i];
+                draw(start -- end, red+linewidth(1.5));
+                start = end;
+            }
+            dot(top); dot(R * dir(210)); dot(R * dir(330));
+		\end{asy}
+	\end{center}
+	Compute the number of ways there are for Jen the Jiraffe to reach either of the two bottom corners.

@@ -1,0 +1,22 @@
+The condition is equivalent to
+	\[
+		\left(\frac{1}{n}+1\right)P\left(\frac{1}{n}\right)-\frac{1}{n}=0\quad\text{for }n=1,2,\dots,9.
+	\]
+	Consequently, $(X+1)P-X$ has roots $\frac{1}{n}$. But $\deg((X+1)P-X)=9$, so
+	\[
+		(X+1)P-X=c(X-1)\left(X-\frac{1}{2}\right)\dots\left(X-\frac{1}{9}\right)
+	\]
+	for some constant $c$. Plug in $X=-1$ to get that
+	\[
+		1=-c\cdot2\cdot\frac{3}{2}\cdot\frac{4}{3}\cdots\frac{10}{9}=-10c,
+	\]
+	so $c=-\frac{1}{10}$. It follows that
+	\[
+		(X+1)P=-\frac{1}{10}(X-1)\left(X-\frac{1}{2}\right)\dots\left(X-\frac{1}{9}\right)+X.
+	\]
+	By Vieta's formulas, the sum of the reciprocals of the roots of $(X+1)P$ is the negative of the $X$ coefficient divided by the constant term. This is
+	\[
+		-\frac{-\frac{1}{10}\left(\frac{1+2+\dots+9}{1\cdot2\cdots9}\right)+1}{\frac{1}{10}\cdot1\cdot\frac{1}{2}\cdots\frac{1}{9}}=45-10!
+	\]
+	so the sum of the reciprocals of the roots of $P$ is $1+45-10!=-3628754$.
+	

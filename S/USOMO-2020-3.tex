@@ -1,0 +1,25 @@
+The key claim is the following characterization of $A$:
+\[
+	A=\{\omega+\omega^{-1}+2 \mid \omega^{2n}=-1\text{ for }\omega\in\FF_{p^2}\}
+\]
+where $n$ is the integer nearest $\frac{p}{4}$. Let $A'$ be the set on the RHS. First, note that $|A|=|A'|$. Indeed, by pairing $\omega$ with $\omega^{-1}$, we have that $|A'|=n$. And
+\begin{align*}
+	|A| &= \sum_{a\in\FF_p}\frac{1}{4}\left(1-\left(\frac{a}{p}\right)\right)\left(1-\left(\frac{4-a}{p}\right)\right) = \frac{1}{4}\sum_{a\in\FF_p}1-\left(\frac{a}{p}\right)-\left(\frac{4-a}{p}\right)+\left(\frac{4a-a^2}{p}\right) \\
+	&= \frac{1}{4}\left(p+\sum_{a\not\equiv0}\left(\frac{4/a-1}{p}\right)\right) = \frac{1}{4}\left(p+\sum_{b\not\equiv-1}\left(\frac{b}{p}\right)\right) \\
+	&= \frac{p+(-1)^{\frac{p-1}{2}}}{4} = n
+\end{align*}
+as desired.
+
+Now, we show that every element of $A'$ is a QNR.
+
+First, suppose that $p\equiv1\pmod4$ so $n=\frac{p-1}{4}$. Then $\omega^{\frac{p-1}{2}}=-1$, so $\omega$ is a QNR in $\FF_p$. Then $\omega+\omega^{-1}+2=\frac{(\omega+1)^2}{\omega}$ is also a QNR in $\FF_p$ as desired.
+
+Next, suppose that $p\equiv3\pmod4$ so $n=\frac{p+1}{4}$. Then $\omega^{\frac{p+1}{2}}=-1$. Then
+\[
+	(\omega+\omega^{-1}+2)^{\frac{p-1}{2}}=\frac{(\omega+1)^{p-1}}{\omega^{\frac{p-1}{2}}}=\frac{(\omega+1)^p}{\omega^{\frac{p-1}{2}}(\omega+1)}=\frac{\omega^p+1}{\omega^{\frac{p+1}{2}}+\omega^{\frac{p-1}{2}}}=\frac{\omega^p+1}{-1-\omega^p}=-1
+\]
+so $\omega+\omega^{-1}+2$ is a QNR in $\FF_p$ as desired.
+
+Finally, observe that $A'=4-A'$ by pairing $\omega$ with $-\omega$. This implies that $A=A'$ as claimed.
+
+To finish, this implies that the elements of $A$ are the roots of $T_n\left(\frac{X-2}{2}\right)$, where $T_n$ is the $n$th Chebyshev polynomial. The leading coefficient of this is $\frac{1}{2}$ while the constant term is $T_n(-1)=(-1)^n$, so the product of the elements of $A$ is $2$.
